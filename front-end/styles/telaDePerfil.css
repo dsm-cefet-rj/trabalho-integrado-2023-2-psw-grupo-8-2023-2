@@ -64,6 +64,15 @@ header a {
     color: white; /* Cor padrão */
 }
 
+#ptext {
+    display: flex
+}
+
+header p {
+    font-size: 13px;
+    margin: 0;
+
+}
 
 #login {
     width: 55px;
@@ -73,6 +82,7 @@ header a {
 
 #carr {
     width: 40px;
+    margin-top: 7px;
 }
 
 .cart-count {
@@ -102,7 +112,6 @@ header a {
 #categorias a:hover {
     color: #ff6600;
 }
-
 
 /*HEADER VEM ATÉ AQUI */
 .perfil {
@@ -156,6 +165,7 @@ footer {
     color: white;
     text-align: center;
     margin-top: 1%;
+    margin-top: 100px;
 }
 
 
