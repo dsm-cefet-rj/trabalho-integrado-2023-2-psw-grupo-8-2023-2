@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adicionar a venda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/adicionarVenda.css">
+</head>
+
+<body>
+    <header class="container-fluid ">
+        <div class="row" id="header-top">
+
+            <div class="col" id="logo"><a href="paginaPrincipal.html"> E-Tênis</a> </div>
+
+            <div class="col" id="search">
+                <form>
+                    <input type="text" placeholder="O que está procurando na loja?">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+
+            <div class="col">
+                <div class="cart text-end" id="carrinho">
+                    <a href="#"><img src="../imagens/login.png" alt="Login" id="login"></a>
+                    <a href="#"><img src="../imagens/cart-icon.png" alt="Carrinho" id="carr"></a>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center" id="categorias">
+            <div class="col">
+                <a href="#">Masculino</a>
+            </div>
+            <div class="col">
+                <a href="#">Feminino</a>
+            </div>
+            <div class="col">
+                <a href="#">Infantil</a>
+            </div>
+
+            <div class="col">
+                <a href="#">Promoções</a>
+            </div>
+            <div class="col">
+                <a href="#">Marcas</a>
+            </div>
+        </div>
+    </header>
+
+
+<main>
+    <div class="container">
+        <form id="shoe-form">
+            <label for="images" class="drop-container" id="dropcontainer">Fotos do tênis
+                <span class="drop-title">Drop files here</span>
+                or
+                <input type="file" id="images" accept="image/*" required>
+            </label>
+
+            <label for="shoe-name">Nome do Tênis:</label>
+            <input type="text" id="shoe-name" name="shoe-name" placeholder="Nome do tênis" required>
+
+            <label for="shoe-color">Cor do Tênis:</label>
+            <input type="text" id="shoe-color" name="shoe-color" placeholder="Cor disponível" required>
+
+            <label for="shoe-size">Tamanho disponível:</label>
+            <input type="text" id="shoe-size" name="shoe-size" placeholder="Tamanho do tênis" required>
+
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" placeholder="Marca">
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="text" id="quantidade" name="quantidade" placeholder="Quantidade disponível">
+
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo">
+                <option value="unissex">Infantil</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+                <option value="unissex">Unissex</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
+
+            <button type="submit">Adicionar Tênis</button>
+        </form>
+    </div>
+</main>
+</body>
+
+
+<footer>
+    E-Tênis<article>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

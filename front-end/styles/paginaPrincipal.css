@@ -1,0 +1,165 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    background-color: #f5f5f5; 
+    padding-left: 11%;
+    padding-right: 11%;
+}
+
+header {
+    display: block;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#search {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+header form {
+    display:flex;
+    width: 700px;
+    align-items: center;
+    text-align: center;
+}
+
+#search input {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: white;
+    max-width: 700px;
+    width: 100%;
+    min-width: 50px;
+}
+
+
+#search button {
+    padding: 5px 12px;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+#logo {
+    font-size: 55px;
+    font-weight: bold;
+}
+
+header a {
+    text-decoration: none; /* Remover sublinhado */
+    color: white; /* Cor padrão */
+}
+
+
+#login {
+    width: 55px;
+    height: auto;
+    cursor: pointer;
+}
+
+#carr {
+    width: 40px;
+}
+
+.cart-count {
+    position: relative;
+    top: -5px;
+    right: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+}
+
+#categorias {
+    margin-top: 1%;
+    background-color: #f4f4f4;
+    padding: 10px 0;
+}
+
+#categorias a {
+    font-size: large;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#categorias a:hover {
+    color: #ff6600;
+}
+
+/* HEADER VEM ATÉ AQUI */
+
+
+h1 {
+    display: block;
+    font-size: 3em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+main h1 {
+    text-align: center;
+    display: block;
+}
+
+main img {
+    max-width: 100%;
+    height: 400px;
+    margin-bottom: 10px;
+}
+
+
+main h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+main p {
+    margin: 0;
+    font-weight: bold;
+    color: black;
+}
+
+main a {
+    text-decoration: none; /* Remover sublinhado */
+    color: #333; /* Cor padrão */
+}
+
+/* Estilo para links não visitados quando o cursor está sobre eles */
+main a:hover {
+    color: #ff6600; /* Cor ao passar o mouse */
+    text-decoration: none; /* Manter o sublinhado ausente */
+}
+
+/* Estilo para links visitados */
+main a:visited {
+    color: #666; /* Cor para links visitados */
+}
+
+footer {
+    display: block;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: 1%;
+}
+
