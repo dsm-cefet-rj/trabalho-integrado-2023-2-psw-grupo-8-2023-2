@@ -1,0 +1,215 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    background-color: #f5f5f5; 
+    padding-left: 11%;
+    padding-right: 11%;
+}
+
+header {
+    display: block;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#search {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+header form {
+    display:flex;
+    width: 700px;
+    align-items: center;
+    text-align: center;
+}
+
+#search input {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: white;
+    max-width: 700px;
+    width: 100%;
+    min-width: 50px;
+}
+
+
+#search button {
+    padding: 5px 12px;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+#logo {
+    font-size: 55px;
+    font-weight: bold;
+}
+
+header a {
+    text-decoration: none; /* Remover sublinhado */
+    color: white; /* Cor padrão */
+}
+
+#ptext {
+    display: flex
+}
+
+header p {
+    font-size: 13px;
+    margin: 0;
+
+}
+
+#login {
+    width: 55px;
+    height: auto;
+    cursor: pointer;
+}
+
+#carr {
+    width: 40px;
+    margin-top: 7px;
+}
+
+.cart-count {
+    position: relative;
+    top: -5px;
+    right: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+}
+
+#categorias {
+    margin-top: 1%;
+    background-color: #f4f4f4;
+    padding: 10px 0;
+}
+
+#categorias a {
+    font-size: large;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#categorias a:hover {
+    color: #ff6600;
+}
+
+#logo{
+    text-decoration: none;
+    float: left;
+    font-size: xx-large;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    margin: 10px;
+}
+
+#logIn{
+    padding-top: 15px;
+    padding-right: 15px;
+    width: 190px;
+    float: right;
+    text-decoration: none;
+    color: black;
+    display: block  ;  
+  
+}
+
+img#image{
+    float: left;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    
+}
+
+span#fds{
+    padding-top: 20px;
+    text-align: center;
+}
+
+.floor{
+    text-decoration: none;
+    color: white;
+}
+
+a#home{
+    text-decoration: none;
+    color: white;
+}
+
+hr{
+    width: 100%;
+    overflow: hidden;
+}
+
+section{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.cade1{
+    margin-bottom: 15px;
+}
+
+button#out{
+    width: 310px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    margin-bottom: 20px;
+}
+
+input[type=text].d2{
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+}
+
+input[type=tel]{
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+}
+
+input[type=email].text1{
+    border-radius: 5px;
+    width: 412px;
+    height: 45px;
+}
+
+#cade2{
+    margin-bottom: 15px;
+}
+
+footer{
+    height: 70px;
+    margin-top: 230px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding-top: 5px;
+}
+
+a#ent{
+    color: black;
+}
+
