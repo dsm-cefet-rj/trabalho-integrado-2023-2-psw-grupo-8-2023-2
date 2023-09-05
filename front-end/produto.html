@@ -6,161 +6,189 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style.css">
     <title>Produto</title>
 </head>
 
 <body>
-    <div class="page-content">
-        <header class="container-fluid ">
-            <div class="row" id="header-top">
-        
-              <div class="col" id="logo"><a href="paginaPrincipal.html"> E-Tênis</a> </div>
-        
-              <div class="col" id="search">
+    <header class="container-fluid ">
+        <div class="row" id="header-top">
+            <div class="col" id="logo"><a href="paginaPrincipal.html"> E-Tênis</a> </div>
+
+            <div class="col" id="search">
                 <form>
-                  <input type="text" placeholder="O que está procurando na loja?">
-                  <button type="submit">Buscar</button>
+                    <input type="text" placeholder="O que está procurando na loja?">
+                    <button type="submit">Buscar</button>
                 </form>
-              </div>
-        
-              <div class="col">
+            </div>
+
+            <div class="col">
                 <div class="cart text-start" id="carrinho">
-                  <div class="container-fluid">
-                  
-                    <div class="row row-cols-2">
-        
-                    <div clas="col" id="ptext">
-                      <p>Faça <a href="#">LOGIN </a> ou <br> crie seu <a href="#"> CADASTRO </a></p>
-                      <a href="#"><img src="../imagens/login.png" alt="Login" id="login"></a>
+                    <div class="container-fluid">
+
+                        <div class="row row-cols-2">
+
+                            <div clas="col" id="ptext">
+                                <p>Faça <a href="#">LOGIN </a> ou <br> crie seu <a href="#"> CADASTRO </a></p>
+                                <a href="#"><img src="../imagens/login.png" alt="Login" id="login"></a>
+                            </div>
+
+                            <div clas="col">
+                                <a href="#"><img src="../imagens/cart-icon.png" alt="Carrinho" id="carr"></a>
+                                <span class="cart-count">0</span>
+                            </div>
+
+                        </div>
                     </div>
-        
-                    <div clas="col">
-                      <a href="#"><img src="../imagens/cart-icon.png" alt="Carrinho" id="carr"></a>
-                      <span class="cart-count">0</span>
-                    </div>
-        
-                  </div>
                 </div>
-              </div>
-              </div>
             </div>
-        
-            <div class="row text-center" id="categorias">
-              <div class="col">
+        </div>
+
+        <div class="row text-center" id="categorias">
+            <div class="col">
                 <a href="#">Masculino</a>
-              </div>
-              <div class="col">
+            </div>
+            <div class="col">
                 <a href="#">Feminino</a>
-              </div>
-              <div class="col">
+            </div>
+            <div class="col">
                 <a href="#">Infantil</a>
-              </div>
-              <div class="col">
+            </div>
+            <div class="col">
                 <a href="#">Promoções</a>
-              </div>
-              <div class="col">
+            </div>
+            <div class="col">
                 <a href="#">Marcas</a>
-              </div>
             </div>
-          </header>
+        </div>
+    </header>
 
-        <main>
+    <main>
+        <div class="container-fluid">
             <div class="engloba1">
-                <div class="shoe-list">
-                    <ul>
-                        <li>
-                            <h3>Tênis Casual</h3>
-                            <input class="arrow arrow-left" type="button">
-                            <img id="tenis" src="../imagens/tenis.jpg" alt="Tenis">
-                            <input class="arrow arrow-right" type="button">
-                        </li>
-                    </ul>
+                <div id="carouselExampleDark" class="carousel carousel-dark">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="10000">
+                            <img src="../imagens/tenis1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="../imagens/tenis2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../imagens/tenis3.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+
                 <div class="engloba2">
-                    <h3>Tamanhos</h3>
-                    <div class="tamanho">
+                    <div class="container-fluid">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <h3>Tamanhos</h3>
+                                <tr>
+                                    <td><button class="tamanho-button">34</button></td>
+                                    <td><button class="tamanho-button">35</button></td>
+                                    <td><button class="tamanho-button">36</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button class="tamanho-button">37</button></td>
+                                    <td><button class="tamanho-button">37,5</button></td>
+                                    <td><button class="tamanho-button">38</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button class="tamanho-button">39</button></td>
+                                    <td><button class="tamanho-button">39,5</button></td>
+                                    <td><button class="tamanho-button">40</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button class="tamanho-button">41</button></td>
+                                    <td><button class="tamanho-button">41,5</button></td>
+                                    <td><button class="tamanho-button">42</button></td>
+                                </tr>
+                            </table>
+                        </div>
 
-                        <table>
-                            <tr>
-                                <button class="tamanho-button">34</button>
-                                <button class="tamanho-button">35</button>
-                                <button class="tamanho-button">36</button>
-                            </tr>
-                            <tr>
-                                <button class="tamanho-button">37</button>
-                                <button class="tamanho-button">37,5</button>
-                                <button class="tamanho-button">38</button>
-                            </tr>
-                            <tr>
-                                <button class="tamanho-button">39</button>
-                                <button class="tamanho-button">39,5</button>
-                                <button class="tamanho-button">40</button>
-                            </tr>
-                            <tr>
-                                <button class="tamanho-button">41</button>
-                                <button class="tamanho-button">41,5</button>
-                                <button class="tamanho-button">42</button>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="colors">
-                        <h3>Cores</h3>
-                        <table>
-                            <tr>
-                                <td>
-                                    <p>Preto</p>
-                                    <input type="button" id="black">
-                                </td>
-                                <td>
-                                    <p>Vermelho</p>
-                                    <input type="button" id="red">
-                                </td>
-                                <td>
-                                    <p>Verde</p>
-                                    <input type="button" id="green">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Azul</p>
-                                    <input type="button" id="blue">
-                                </td>
-                                <td>
-                                    <p>Branco</p>
-                                    <input type="button" id="white">
-                                </td>
-                                <td>
-                                    <p>Amarelo</p>
-                                    <input type="button" id="yellow">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Rosa</p>
-                                    <input type="button" id="pink">
-                                </td>
-                                <td>
-                                    <p>Roxo</p>
-                                    <input type="button" id="purple">
-                                </td>
-                                <td>
-                                    <p>Laranja</p>
-                                    <input type="button" id="orange">
-                                </td>
-                            </tr>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <h3>Cores</h3>
+                                <tr>
+                                    <td class="w-25">
+                                        <p>Preto</p>
+                                        <input type="button" id="black">
+                                    </td>
+                                    <td class="w-25">
+                                        <p>Vermelho</p>
+                                        <input type="button" id="red">
+                                    </td>
+                                    <td class="w-25">
+                                        <p>Verde</p>
+                                        <input type="button" id="green">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-25">
+                                        <p>Azul</p>
+                                        <input type="button" id="blue">
+                                    </td>
+                                    <td class="w-25">
+                                        <p>Branco</p>
+                                        <input type="button" id="white">
+                                    </td>
+                                    <td>
+                                        <p>Amarelo</p>
+                                        <input type="button" id="yellow">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-25">
+                                        <p>Rosa</p>
+                                        <input type="button" id="pink">
+                                    </td>
+                                    <td class="w-3">
+                                        <p>Roxo</p>
+                                        <input type="button" id="purple">
+                                    </td>
+                                    <td class="w-3">
+                                        <p>Laranja</p>
+                                        <input type="button" id="orange">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="buy">
-                <button type="button">COMPRAR AGORA</button>
-                <button type="button">ADICIONAR AO CARRINHO</button>
+        <div class="container-fluid">
+            <div class="buy d-block">
+                <div class="text-center">
+                    <button type="button">COMPRAR AGORA</button>
+                    <button type="button">ADICIONAR AO CARRINHO</button>
+                </div>
             </div>
-            
+        </div>
+
+        <div class="container-fluid">
             <h3>Descrição do Produto</h3>
             <p>Possui forma pequena, para um melhor ajuste nos pés, recomendamos a compra de um tamanho maior do que o
                 seu usual. Aposte no conforto e qualidade do novo Tênis de Corrida Masculino da Mizuno para te
@@ -171,14 +199,16 @@
                 de borracha proporciona aderência e tração por onde você passar. Indicado para corredores de pisada
                 neutra, o Tênis Masculino Mizuno acompanha os corredores mais ambiciosos na busca pelo melhor pace.
                 Aproveite! </p>
-    </div>
+        </div>
     </main>
+
     <footer>
         E-Tênis<article>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
