@@ -12,7 +12,6 @@ export const Main = (props) => {
             <div className="products">
                 {PRODUCTS.map((product, key) => <Product data={product} />)}
             </div>
-            <h1>MAIS VENDIDOS</h1>
         </Container>
     );
 }
