@@ -1,0 +1,122 @@
+
+
+.header {
+    display: block;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.search form {
+    display: flex;
+    width: 700px;
+    align-items: center;
+    text-align: center;
+    margin-right: 90px;
+}
+
+.search input {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: white;
+    max-width: 700px;
+    width: 100%;
+    min-width: 50px;
+}
+
+.search button {
+    padding: 5px 12px;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.logo {
+    font-size: 55px;
+    font-weight: bold;
+    margin-left: 20px;
+    align-items: center;
+    text-align: center;
+
+}
+
+.header a {
+    text-decoration: none;
+    /* Remover sublinhado */
+    color: white;
+    /* Cor padrão */
+    font-weight: bold;
+}
+
+.loginText {
+    display: flex;
+    position: relative;
+    top: 20px;
+}
+
+#loginImg {
+    width: 55px;
+    height: auto;
+    cursor: pointer;
+}
+
+#cartImg {
+    width: 40px;
+    margin-top: 25px;
+}
+
+
+.header p {
+    font-size: 13px;
+    margin: 0;
+}
+
+.login {
+    align-items: center;
+    text-align: center;
+}
+
+
+.cart-count {
+    position: relative;
+    top: -5px;
+    right: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+}
+
+
+
+#categorias {
+    margin-top: 1%;
+    background-color: #f4f4f4;
+    padding: 10px 0;
+}
+
+#categorias a {
+    font-size: large;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#categorias a:hover {
+    color: #ff6600;
+}

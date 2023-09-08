@@ -1,0 +1,63 @@
+h1 {
+    text-align: center;
+}
+
+.shopTitle {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 40px;
+  }
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .product {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 15px;
+    width: 290px;
+    height: 250px;
+    margin: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+
+  .product .description {
+    text-align: center;
+  }
+  
+  .product:hover {
+    transition: 0.3s ease-in;
+    cursor: pointer;
+  }
+  
+  .addToCartBttn {
+    background-color: transparent;
+    border: 2px solid rgb(19, 19, 19);
+    min-width: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+  }
+  
+  .addToCartBttn:hover {
+    background-color: rgb(19, 19, 19);
+    color: white;
+    cursor: pointer;
+  }
+
+
+  .image-container {
+    max-width: 100%; /* Garante que o contêiner não ultrapasse o tamanho do pai */
+  }
+  
+  .responsive-image {
+    width: 100%; /* A imagem se ajustará automaticamente à largura do contêiner */
+    height: auto; /* Mantém a proporção original da imagem */
+  }
