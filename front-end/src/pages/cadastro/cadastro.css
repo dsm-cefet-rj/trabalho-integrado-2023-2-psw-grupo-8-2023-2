@@ -1,0 +1,73 @@
+span#fds{
+    padding-top: 20px;
+    text-align: center;
+}
+
+.floor{
+    text-decoration: none;
+    color: white;
+}
+
+a#home{
+    text-decoration: none;
+    color: white;
+}
+
+hr{
+    width: 100%;
+    overflow: hidden;
+}
+
+section{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.cade1{
+    margin-bottom: 15px;
+}
+
+button#out{
+    width: 310px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    margin-bottom: 20px;
+}
+
+input[type=text].d2{
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+}
+
+input[type=tel]{
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+}
+
+input[type=email].text1{
+    border-radius: 5px;
+    width: 412px;
+    height: 45px;
+}
+
+#cade2{
+    margin-bottom: 15px;
+}
+
+footer{
+    height: 70px;
+    margin-top: 230px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding-top: 5px;
+}
+
+a#ent{
+    color: black;
+}
+

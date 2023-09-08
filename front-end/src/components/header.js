@@ -37,7 +37,7 @@ const HeaderRightSection = () => {
             <Row xs="auto">
                 <Col className="login">
                     <div className="loginText">
-                        <p>Faça <Link to='/'>LOGIN</Link> ou <br /> crie seu <Link to='/'>CADASTRO</Link></p>
+                        <p>Faça <Link to='/Login'>LOGIN</Link> ou <br /> crie seu <Link to='/Cadastro'>CADASTRO</Link></p>
                         <img src={loginIcon} id="loginImg" alt="UserIcon"></img>
                     </div>
                 </Col>

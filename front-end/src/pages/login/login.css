@@ -1,0 +1,86 @@
+hr{
+    width: 100%;
+}
+
+#logos{
+    text-decoration: none;
+    float: left;
+    font-size: xx-large;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    margin: 10px;
+}
+
+#logIn{
+    float: right;
+    text-decoration: none;
+    color: black;
+    display: block;  
+  
+}
+
+#image{
+    display: flex;
+    width: 50px;
+    height: 50px;
+    
+}
+
+#knife{
+    display: flex;
+}
+
+#log{
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+#content{
+    display: block;
+}
+
+a#home{
+    text-decoration: none;
+    color: white;
+}
+
+input[type=text].d1{
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 1px 2px;
+}
+
+button#in{
+    width: 310px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    margin-bottom: 20px;
+}
+
+footer{
+    height: 70px;
+    margin-top: 29%;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding-top: 15px;
+}
+
+.floor{
+    text-decoration: none;
+    color: white;
+}
+
+#astro{
+    text-align: center;
+}
+
+#cad{
+    font-size: x-large;
+    color: black;
+}
