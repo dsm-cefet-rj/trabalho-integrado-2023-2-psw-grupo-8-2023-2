@@ -116,7 +116,7 @@ header p {
 button{
     background-color: white;
     color: black;
-    border-radius: 30px;
+    /* border-radius: 30px; */
 }
 
 .tamanho{
@@ -132,6 +132,7 @@ button{
 .tamanho-button{
     width: 46px;
     height: 46px;
+    border-radius: 30px;
 }
 
 #black{
@@ -217,6 +218,7 @@ button{
     width: 160px;
     aspect-ratio: 3/1;
     align-content: center;
+    border-radius: 30px;
 }
 
 .engloba1{
@@ -252,4 +254,12 @@ footer {
     color: white;
     text-align: center;
     margin-top: 1%;
+}
+
+h3{
+    text-align: center;
+}
+
+.ac{
+   text-align: center; 
 }
