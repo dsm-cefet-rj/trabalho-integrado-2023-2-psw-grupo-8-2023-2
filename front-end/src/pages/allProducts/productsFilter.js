@@ -7,7 +7,7 @@ export const ProductsFilter = (props) => {
     console.log(props.tipo)
     if (tipo === props.tipo) {
         return (
-            <Link to={`/Produto/${id}`} className='product'>
+            <Link to={`/Produto/${id}`}>
             <div className='product'>
                 <div className="image-container">
                     <img className="responsive-image" src={img} fluid="true" responsive="true" alt="productImage" />
@@ -22,7 +22,7 @@ export const ProductsFilter = (props) => {
     }
     if (props.tipo === 'todos os produtos') {
         return (
-            <Link to={`/Produto/${id}`} className='product'>
+            <Link to={`/Produto/${id}`}>
             <div className='product'>
                 <div className="image-container">
                     <img className="responsive-image" src={img} fluid="true" responsive="true" alt="productImage" />

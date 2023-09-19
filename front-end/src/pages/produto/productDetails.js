@@ -4,6 +4,7 @@ import { PRODUCTS } from "../../data";
 import { Container, Row, Col } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import './productDetails.css';
+import Image from 'react-bootstrap/Image';
 
 export default function ProductDetails() {
   const { id } = useParams()
@@ -16,29 +17,17 @@ export default function ProductDetails() {
 
     <Carousel data-bs-theme="dark">
       <Carousel.Item>
-        <img
-          className="d-block w-25"
-          src={product.img} fluid="true"
-          alt="First slide"
-        />
+        <Image src={product.img} fluid />
         <Carousel.Caption>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
-          className="d-block w-25"
-          src={product.img} fluid="true"
-          alt="Second slide"
-        />
+        <Image src={product.img} fluid />
         <Carousel.Caption>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
-          className="d-block w-25"
-          src={product.img} fluid="true"
-          alt="Third slide"
-        />
+        <Image src={product.img} fluid />
         <Carousel.Caption>
         </Carousel.Caption>
       </Carousel.Item>
