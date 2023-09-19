@@ -6,6 +6,9 @@ import Col from 'react-bootstrap/Col';
 import loginIcon from '../images/login.png'
 import cartIcon from '../images/cart-icon.png'
 import "./header.css"
+import { useState } from "react";
+import { PRODUCTS } from "../data";
+import { Overlay } from "react-bootstrap";
 
 export const Header = () => {
     return (
@@ -15,11 +18,8 @@ export const Header = () => {
                     <Col className="logo" >
                         <Link to="/" >E-Tênis</Link>
                     </Col>
-                    <Col  className="search" >
-                        <form>
-                            <input type="text" placeholder="O que está procurando na loja?" />
-                            <button type="submit">Buscar</button>
-                        </form>
+                    <Col  xs={5} className="search" >
+                        <SearchBar />
                     </Col>
                     <Col>
                         <HeaderRightSection />
@@ -69,4 +69,25 @@ const HeaderCategories = () => {
             </div>
         </div>
     )
+}
+
+const SearchBar = () => {
+    const [searchTerm, setSearchTerm] = useState("");
+
+    return (
+        <div className="searchResults">
+          <input type="text" placeholder='O que você procura?' onChange={event => { setSearchTerm(event.target.value) }} />
+          {PRODUCTS.filter((val) => {
+            if (searchTerm === "") {
+              return ""
+            } else if (val.nome.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return val
+            }
+          }).map((val, key) => {
+            return (
+            <Link to={`/Produto/${val.id}`}>< div> {val.nome} </div></Link>
+            )
+          })}
+        </div>
+      );
 }
