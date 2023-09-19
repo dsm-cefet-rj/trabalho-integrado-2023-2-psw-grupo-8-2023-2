@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const Product = (props) => {
   const { id, nome, preço, img } = props.data
   return (
+    <Link to={`/Produto/${id}`}>
     <div className='product'>
       <div className="image-container">
         <img className="responsive-image" src={img} fluid="true" responsive="true" alt="productImage" />
@@ -12,5 +14,6 @@ export const Product = (props) => {
         <p> R${preço} </p>
       </div>
     </div>
+    </Link>
   )
 }
