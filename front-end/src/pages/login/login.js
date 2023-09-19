@@ -3,16 +3,14 @@ import './login.css'
 import { Link } from 'react-router-dom'
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { addProjetoServer, updateProjetoServer, selectProjetosById } from '../ProjetosSlice'
-import { projetoSchema } from '../ProjetoSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { string, object, number, setLocale } from 'yup';
 
 const Schema = object(
     {
-        email: string().required().matches(/@/, 'O email deve conter o caractere "@"'),
-        password: string().required().min(4, 'A senha precisa ter pelo menos 4 caracteres'),
+        email: string().required('Campo obrigatório').matches(/@/, 'O email deve conter o caractere "@"'),
+        password: string().required('Campo obrigatório').min(4, 'A senha precisa ter pelo menos 4 caracteres'),
     }
 );
 
