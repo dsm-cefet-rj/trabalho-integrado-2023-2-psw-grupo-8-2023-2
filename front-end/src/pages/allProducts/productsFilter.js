@@ -10,7 +10,7 @@ export const ProductsFilter = (props) => {
             <Link to={`/Produto/${id}`}>
             <div className='product'>
                 <div className="image-container">
-                    <img className="responsive-image" src={img} fluid="true" responsive="true" alt="productImage" />
+                    <img className="responsive-image" src={require(`../../images/${img}`)} fluid="true" responsive="true" alt="productImage" />
                 </div>
                 <div className='description'>
                     <p> <b> {nome} </b> </p>
@@ -25,7 +25,7 @@ export const ProductsFilter = (props) => {
             <Link to={`/Produto/${id}`}>
             <div className='product'>
                 <div className="image-container">
-                    <img className="responsive-image" src={img} fluid="true" responsive="true" alt="productImage" />
+                    <img className="responsive-image" src={require(`../../images/${img}`)} fluid="true" responsive="true" alt="productImage" />
                 </div>
                 <div className='description'>
                     <p> <b> {nome} </b> </p>

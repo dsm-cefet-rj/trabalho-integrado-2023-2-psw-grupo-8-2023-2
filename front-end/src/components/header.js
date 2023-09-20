@@ -64,9 +64,6 @@ const HeaderCategories = () => {
             <div className="col">
                 <Link to='/AllProducts/infantil' state={"masculino"}>Infantil</Link>
             </div>
-            <div className="col">
-                <Link to='/AllProducts/todos os produtos' state={"masculino"}>Todos os produtos</Link>
-            </div>
         </div>
     )
 }
