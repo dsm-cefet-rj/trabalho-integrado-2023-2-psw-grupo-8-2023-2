@@ -43,7 +43,7 @@ const HeaderRightSection = () => {
                 </Col>
                 <Col >
                     <div className="cart">
-                        <Link to='/'><img src={cartIcon} id="cartImg" alt="cartIcon"></img></Link>
+                        <Link to='/Carrinho'><img src={cartIcon} id="cartImg" alt="cartIcon"></img></Link>
                         <span className="cart-count">0</span>
                     </div>
                 </Col>
