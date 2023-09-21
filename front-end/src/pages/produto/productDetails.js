@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import './productDetails.css';
 import Image from 'react-bootstrap/Image';
+import { Link } from "react-router-dom";
 
 export default function ProductDetails() {
   const { id } = useParams()
@@ -84,7 +85,7 @@ export default function ProductDetails() {
       <div class="container-fluid">
         <div class="buy d-block">
           <div class="text-center">
-            <button type="button">COMPRAR AGORA</button>
+            <button type="button"><Link to='/Carrinho'>COMPRAR AGORA</Link></button>
             <button type="button">ADICIONAR AO CARRINHO</button>
           </div>
         </div>
