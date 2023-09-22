@@ -1,19 +1,22 @@
 import React from 'react';
 import "./carrinho.css"
-import { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import PageFooter from './PageFooter';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import Button from 'react-bootstrap/Button';
+import { removeFromCart } from '../../features/cartSlice';
 
 
 export const Carrinho = () => {
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
+
+    const handleRemoveFromCart = (cartItem) => {
+        dispatch(removeFromCart(cartItem))
+    } 
 
     return (
         <>
@@ -47,12 +50,12 @@ export const Carrinho = () => {
                                             <Image src={require(`../../images/${cartItem.img}`)}  id='cart-product-image' fluid />
                                                 <div className='nome-remove'>
                                                     <h3 id="item-nome">{cartItem.nome}</h3>
-                                                    <button id='remover'>
+                                                    <button id='remover' onClick= {( ) => handleRemoveFromCart(cartItem)}>
                                                         Remover
                                                     </button>
                                                 </div>
                                             </Col>
-                                            <Col className="cart-product-price" justify-content-center > <p>$100{cartItem.price}</p></Col>
+                                            <Col className="cart-product-price" justify-content-center > <p>R${cartItem.preço}</p></Col>
 
                                             <Col className="cart-product-quantity">
                                                 <button>
@@ -72,13 +75,14 @@ export const Carrinho = () => {
                             </div>
 
                             <div className='cart-summary'>
-                                <button className='clear-cart'>Limpar Carrinho</button>
+                            <Button id="clear-cart" variant="dark">LIMPAR CARRINHO</Button>
+
                                 <div className='cart-comprar'>
                                     <div className='cart-total'>
-                                        <span>Total</span>
-                                        <span className='quantidade'>${cart.cartTotalAmount}</span>
+                                        <span>Total </span>
+                                        <span className='quantidade'>R$: {cart.cartTotalAmount}</span>
                                     </div>
-                                    <button> Finalizar Compra </button>
+                                    <Button variant="dark">FINALIZAR COMPRA</Button>
                                 </div>
                             </div>
 

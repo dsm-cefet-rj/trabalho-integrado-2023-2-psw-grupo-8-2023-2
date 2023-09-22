@@ -8,7 +8,7 @@ import Image from 'react-bootstrap/Image';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
-
+import { Link } from "react-router-dom";
 
 export default function ProductDetails() {
   const { items, status } = useSelector((state) => state.products);
@@ -93,7 +93,7 @@ export default function ProductDetails() {
       <div class="container-fluid">
         <div class="buy d-block">
           <div class="text-center">
-            <button onClick={() => handleAddToCart(product)} type="button">ADICIONAR AO CARRINHO</button>
+            <Link to="/Carrinho"><button onClick={() => handleAddToCart(product)} type="button">ADICIONAR AO CARRINHO</button></Link>
           </div>
         </div>
       </div>

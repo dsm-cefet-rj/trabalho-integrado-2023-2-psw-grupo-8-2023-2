@@ -5,8 +5,10 @@
     font-size: 30px;
 }
 
+.CarrinhoTitulo {
+    margin-top: 10px;
 
-
+}
 
 
 .count {
@@ -14,7 +16,12 @@
     text-align: center;
 }
 
-
+#titulos {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-top: 20px;;
+    border-bottom:1px solid black;
+}
 
 #titulos h3 {
     font-size: 15px;
@@ -132,7 +139,19 @@
     margin-bottom: 30px;
 }
 
+.cart-comprar {
+    margin-top: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
 
+.cart-summary {
+    border-top: 1px solid black;
+}
+
+#clear-cart {
+    margin-top: 10px;
+}
 
 
 
