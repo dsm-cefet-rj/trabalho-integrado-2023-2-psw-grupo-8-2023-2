@@ -8,6 +8,7 @@ import cartIcon from '../images/cart-icon.png'
 import "./header.css"
 import { useState } from "react";
 import { PRODUCTS } from "../data";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
     return (
@@ -31,6 +32,13 @@ export const Header = () => {
 };
 
 const HeaderRightSection = () => {
+
+    const cart = useSelector((state) => state.cart);
+    let totalAmount = 0;
+    cart.cartItems.map((cartItem) => 
+    totalAmount = totalAmount + cartItem.cartQuantity
+    );
+    
     return (
         <Container fluid="true">
             <Row xs="auto">
@@ -43,7 +51,7 @@ const HeaderRightSection = () => {
                 <Col >
                     <div className="cart">
                         <Link to='/Carrinho'><img src={cartIcon} id="cartImg" alt="cartIcon"></img></Link>
-                        <span className="cart-count">0</span>
+                        <span className="cart-count">{totalAmount}</span>
                     </div>
                 </Col>
             </Row>

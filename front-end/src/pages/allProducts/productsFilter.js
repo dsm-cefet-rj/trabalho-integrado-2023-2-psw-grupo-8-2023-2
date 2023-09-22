@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 
 export const ProductsFilter = (props) => {
     const { id, nome, preço, img, tipo } = props.data
-    console.log(props.tipo)
+
+    
     if (tipo === props.tipo) {
         return (
             <Link to={`/Produto/${id}`}>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { PRODUCTS } from '../../data';
 
 export const Product = (props) => {
   const { id, nome, preço, img } = props.data

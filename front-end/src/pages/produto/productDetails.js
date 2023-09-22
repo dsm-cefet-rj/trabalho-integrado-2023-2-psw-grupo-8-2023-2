@@ -6,13 +6,18 @@ import Carousel from 'react-bootstrap/Carousel';
 import './productDetails.css';
 import Image from 'react-bootstrap/Image';
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cartSlice";
+
 
 export default function ProductDetails() {
   const { items, status } = useSelector((state) => state.products);
-
+  const dispatch = useDispatch();
   const { id } = useParams()
   const product = items.find((element) => element.id == id);
-
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
 
   return (<>
     <Container>
@@ -88,8 +93,7 @@ export default function ProductDetails() {
       <div class="container-fluid">
         <div class="buy d-block">
           <div class="text-center">
-            <button type="button">COMPRAR AGORA</button>
-            <button type="button">ADICIONAR AO CARRINHO</button>
+            <button onClick={() => handleAddToCart(product)} type="button">ADICIONAR AO CARRINHO</button>
           </div>
         </div>
       </div>
