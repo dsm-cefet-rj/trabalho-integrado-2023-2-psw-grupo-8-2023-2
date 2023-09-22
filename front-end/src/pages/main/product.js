@@ -4,7 +4,7 @@ import { PRODUCTS } from '../../data';
 
 export const Product = (props) => {
   const { id, nome, preço, img } = props.data
-  console.log(img);
+
   return (
     <Link to={`/Produto/${id}`}>
     <div className='product'>

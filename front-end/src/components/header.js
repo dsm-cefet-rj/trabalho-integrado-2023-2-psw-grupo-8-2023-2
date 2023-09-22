@@ -8,7 +8,6 @@ import cartIcon from '../images/cart-icon.png'
 import "./header.css"
 import { useState } from "react";
 import { PRODUCTS } from "../data";
-import { Overlay } from "react-bootstrap";
 
 export const Header = () => {
     return (

@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PRODUCTS } from "../../data";
 import { Container, Row, Col } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import './productDetails.css';
 import Image from 'react-bootstrap/Image';
+import { useSelector } from "react-redux";
 
 export default function ProductDetails() {
+  const { items, status } = useSelector((state) => state.products);
+
   const { id } = useParams()
-  const product = PRODUCTS.find((element) => element.id == id);
+  const product = items.find((element) => element.id == id);
+
 
   return (<>
     <Container>
@@ -17,17 +21,17 @@ export default function ProductDetails() {
 
     <Carousel data-bs-theme="dark">
       <Carousel.Item>
-        <Image src={product.img} fluid />
+        <Image src={require(`../../images/${product.img}`)} fluid />
         <Carousel.Caption>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <Image src={product.img} fluid />
+        <Image src={require(`../../images/${product.img}`)} fluid />
         <Carousel.Caption>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <Image src={product.img} fluid />
+        <Image src={require(`../../images/${product.img}`)} fluid />
         <Carousel.Caption>
         </Carousel.Caption>
       </Carousel.Item>
