@@ -7,16 +7,34 @@ import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { removeFromCart } from '../../features/cartSlice';
-
+import { clearCart, decreaseCart, getTotal, increaseCart, removeFromCart } from '../../features/cartSlice';
+import { useEffect } from 'react';
 
 export const Carrinho = () => {
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getTotal());
+    },[cart]);
+
     const handleRemoveFromCart = (cartItem) => {
         dispatch(removeFromCart(cartItem))
     } 
+
+    const handleDecreaseCart = (cartItem) => {
+        dispatch(decreaseCart(cartItem))
+    }
+
+    const handleIncreaseCart = (cartItem) => {
+        dispatch(increaseCart(cartItem))
+    }
+
+    const handleClearCart = () => {
+        dispatch(clearCart())
+    }
+
+    
 
     return (
         <>
@@ -58,11 +76,11 @@ export const Carrinho = () => {
                                             <Col className="cart-product-price" justify-content-center > <p>R${cartItem.preço}</p></Col>
 
                                             <Col className="cart-product-quantity">
-                                                <button>
+                                                <button onClick={() => handleIncreaseCart(cartItem)}>
                                                     +
                                                 </button>
                                                 <div className="count">{cartItem.cartQuantity}</div>
-                                                <button>-</button>
+                                                <button onClick={() => handleDecreaseCart(cartItem)}>-</button>
 
                                             </Col>
                                             <Col className="cart-product-total-price">
@@ -75,12 +93,12 @@ export const Carrinho = () => {
                             </div>
 
                             <div className='cart-summary'>
-                            <Button id="clear-cart" variant="dark">LIMPAR CARRINHO</Button>
+                            <Button onClick={() => handleClearCart()}id="clear-cart" variant="dark">LIMPAR CARRINHO</Button>
 
                                 <div className='cart-comprar'>
                                     <div className='cart-total'>
                                         <span>Total </span>
-                                        <span className='quantidade'>R$: {cart.cartTotalAmount}</span>
+                                        <span className='quantidade'>R$:{cart.cartTotalAmount}</span>
                                     </div>
                                     <Button variant="dark">FINALIZAR COMPRA</Button>
                                 </div>
