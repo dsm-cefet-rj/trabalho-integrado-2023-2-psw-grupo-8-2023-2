@@ -45,9 +45,10 @@ export const Carrinho = () => {
                 <main id="products">
                     {cart.cartItems.length === 0 ? (
                         <>
-                            <p style={{ textAlign: 'center' }} ><b>Carrinho Vazio</b></p>
-                            <div className="start-shopping">
-                                <Link to="/"> Pagina Inicial </Link>
+                            <p id='empty-cart'style={{ textAlign: 'center' }} ><b>Carrinho Vazio</b></p>
+                            <div className="start-shopping" style={{ textAlign: 'center' }}>
+                            
+                                <Link to="/" style={{ font_weight: 'bold' }}> PAGINA INICIAL </Link>
                             </div>
                         </>
                     ) : (
