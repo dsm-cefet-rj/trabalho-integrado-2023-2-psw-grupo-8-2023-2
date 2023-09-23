@@ -1,0 +1,84 @@
+.adicionarVenda .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.adicionarVenda h1 {
+    font-size: 24px;
+}
+
+.adicionarVenda .container form {
+    margin-top: 20px;
+}
+
+.adicionarVenda main label,
+main p {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+.adicionarVenda input,
+.adicionarVenda select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.adicionarVenda button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.adicionarVenda button:hover {
+    background-color: #555;
+}
+
+
+.adicionarVenda .drop-container {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.adicionarVenda .drop-container:hover {
+    background: #eee;
+    border-color: #111;
+}
+
+.adicionarVenda .drop-container:hover .drop-title {
+    color: #222;
+}
+
+.adicionarVenda .drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+
+.adicionarVenda footer {
+    display: block;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: 1%;
+}

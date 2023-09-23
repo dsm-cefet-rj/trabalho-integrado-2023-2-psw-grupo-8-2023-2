@@ -45,7 +45,7 @@ const HeaderRightSection = () => {
                 <Col className="login">
                     <div className="loginText">
                         <p>Faça <Link to='/Login'>LOGIN</Link> ou <br /> crie seu <Link to='/Cadastro'>CADASTRO</Link></p>
-                        <img src={loginIcon} id="loginImg" alt="UserIcon"></img>
+                        <Link to='/AdicionarVenda'> <img src={loginIcon} id="loginImg" alt="UserIcon"></img> </Link>
                     </div>
                 </Col>
                 <Col >

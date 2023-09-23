@@ -20,7 +20,16 @@ export const productsFetch = createAsyncThunk(
 const productsSlice = createSlice({
     name: "products",
     initialState,
-    reducers: {},
+    reducers: {
+        addToStore(state,action) {
+            console.log(action.payload);
+            const lastId = state.items.length + 1;
+            const newTenis = action.payload;
+            newTenis['id'] = lastId;
+            newTenis['img'] = "tenis4.jpg";
+            state.items.push(newTenis);
+        },
+    },
     extraReducers: {
         [productsFetch.pending]: (state, action) => {
             state.status = "pending"
@@ -35,4 +44,5 @@ const productsSlice = createSlice({
     }
 });
 
+export const { addToStore } = productsSlice.actions;
 export default productsSlice.reducer;

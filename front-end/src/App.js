@@ -9,6 +9,7 @@ import { Cadastro } from './pages/cadastro/cadastro'
 import { Login } from './pages/login/login'
 import ProductDetails from './pages/produto/productDetails'
 import {Carrinho} from './pages/carrinho/carrinho'
+import {AdicionarVenda} from './pages/adicionarVenda/adicionarVenda'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Login" element={<Login/>}/>
           <Route path="/Produto/:id" element={<ProductDetails/>}/>
           <Route path="/Carrinho" element={<Carrinho/>}/>
+          <Route path="/AdicionarVenda" element={<AdicionarVenda/>}/>
         </Routes>
       </Router>
     </div>

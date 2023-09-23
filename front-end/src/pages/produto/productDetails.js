@@ -9,16 +9,27 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
 import { Link } from "react-router-dom";
+import { productsFetch } from "../../features/productsSlice";
+
 
 export default function ProductDetails() {
   const { items, status } = useSelector((state) => state.products);
+
   const dispatch = useDispatch();
+  console.log(status);
+
+
+
   const { id } = useParams()
   const product = items.find((element) => element.id == id);
+
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
 
+  if(status==="pending" || status=="null") {
+    return ( <div>LOADING</div>)
+  } else {
   return (<>
     <Container>
       <h3><b>{product.nome}</b></h3>
@@ -106,5 +117,5 @@ export default function ProductDetails() {
         <p>{product.desc}</p>
       </div>
     </Container>
-  </>)
+  </>)}
 }
