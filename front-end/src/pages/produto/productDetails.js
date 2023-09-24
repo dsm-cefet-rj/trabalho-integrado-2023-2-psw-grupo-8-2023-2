@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
 import { Link } from "react-router-dom";
 import { productsFetch } from "../../features/productsSlice";
-import { addComment, increment, decrement } from "../comentario/comentario";
+import { addComment, removeComment } from "../comentario/comentario";
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
@@ -32,17 +32,40 @@ export default function ProductDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Agora você pode usar o valor de "comment" como a mensagem que o usuário digitou
-    console.log("Mensagem digitada:", comment);
-    // Aqui você pode despachar a action para adicionar a mensagem ao estado do Redux, se desejar
-    dispatch(addComment(comment))
-    setComment("")
-
+    // Aqui você pode despachar a action para adicionar a mensagem ao estado do Redux,
+    // incluindo o id do produto associado.
+    dispatch(addComment({ productId: product.id, comment }));
+    setComment("");
   };
+
+  const handleRemoveComment = (productId, index) => {
+    // Aqui você pode despachar uma ação para remover o comentário do estado do Redux.
+    dispatch(removeComment({ productId, index }));
+  };
+
+  // const handleEditComment = (productId, index) => {
+  //   // Aqui você pode despachar uma ação para editar o comentário do estado do Redux.
+  //   dispatch(editComment({ productId, index, editedComment }));
+  // };
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
+
+  const [editingIndex, setEditingIndex] = useState(-1);
+  const [editedComment, setEditedComment] = useState("");
+
+  // const handleEdit = (index) => {
+  //   setEditingIndex(index);
+  //   setEditedComment(msg[index]);
+  // };
+
+  // const handleSaveEdit = (index) => {
+  //   // Aqui você pode despachar uma ação para editar o comentário no estado Redux.
+  //   dispatch(editComment({ index, editedComment }));
+  //   setEditingIndex(-1);
+  //   setEditedComment("");
+  // };
 
   if (status === "pending" || status == "null") {
     return (<div>LOADING</div>)
@@ -151,13 +174,29 @@ export default function ProductDetails() {
         <Container fluid="true">
           <div>
             <Col>
-              {msg.map((comment, index) => (
-                <Row key={index} style={{ border: "2px solid #000", padding: "10px", marginBottom: "10px"}}>{comment}</Row>
+              {msg[product.id] && msg[product.id].map((comment, index) => (
+                <Row key={index} style={{ border: "2px solid #000", padding: "10px", marginBottom: "10px" }}>
+                  {index === editingIndex ? (
+                    <>
+                      {/* <input
+                      type="text"
+                      value={editedComment}
+                      onChange={(e) => setEditedComment(e.target.value)}
+                    />
+                    <button onClick={() => handleSaveEdit(index)}>Salvar</button> */}
+                    </>
+                  ) : (
+                    <>
+                      {comment}
+                      {/* <button onClick={() => handleEdit(index)}>Editar</button> */}
+                    </>
+                  )}
+                  <button onClick={() => handleRemoveComment(product.id, index)}>Remover</button>
+                </Row>
               ))}
             </Col>
           </div>
         </Container>
-
       </Container>
     </>)
   }
