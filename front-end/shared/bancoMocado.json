@@ -1,7 +1,7 @@
 
 {
     "meusProdutos" : [
-    {"tipo":"masculino", "id": 1,"nome":"Tênis Nike Sb Chron 2 Preto/Branco", "preço": 199.99, "img": "tenis.jpg", "desc": "<Blablabla1>" },
+    {"tipo":"masculino", "id": 1,"nome":"Tênis Nike Sb Chron 2 Preto/Branco", "preço": 199.99, "img": "tenis.jpg", "desc": "Blablabla1" },
     {"tipo":"infantil", "id": 2,"nome":"Air Jordan 1 Retro High", "preço": 149.99, "img": "tenis1.jpg", "desc": "Blablabla2"},
     {"tipo":"feminino", "id": 3,"nome":"Tênis Stan Smith - Branco adidas", "preço": 179.99, "img": "tenis2.jpg", "desc": "Blablabla3" },
     {"tipo":"masculino", "id": 4,"nome":"Tênis Nike Air Max SC", "preço": 189.99, "img": "tenis3.jpg", "desc": "Blablabla4" },

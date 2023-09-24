@@ -10,6 +10,9 @@ import { Login } from './pages/login/login'
 import ProductDetails from './pages/produto/productDetails'
 import {Carrinho} from './pages/carrinho/carrinho'
 import {AdicionarVenda} from './pages/adicionarVenda/adicionarVenda'
+import { Perfil } from './pages/perfil/perfil';
+import { EditProducts } from './pages/perfil/editProducts';
+
 
 function App() {
   return (
@@ -24,6 +27,8 @@ function App() {
           <Route path="/Produto/:id" element={<ProductDetails/>}/>
           <Route path="/Carrinho" element={<Carrinho/>}/>
           <Route path="/AdicionarVenda" element={<AdicionarVenda/>}/>
+          <Route path="/Perfil" element={<Perfil/>}/>
+          <Route path="/MeusProdutos" element={<EditProducts/>}/>
         </Routes>
       </Router>
     </div>

@@ -1,0 +1,110 @@
+.cart-product {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+#item-nome {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+@media screen and (min-width: 601px) {
+    #item-nome {
+        font-size: 15px;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #item-nome {
+        font-size: 10px;
+
+    }
+}
+
+#remover {
+    border: none;
+    font-weight: bold;
+    color: red;
+}
+
+@media screen and (min-width: 601px) {
+    #remover {
+
+        width: 100px;
+        height: 20px;
+        color: red;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #remover {
+
+        margin-top: 20px;
+        width: 10px;
+        height: 10px;
+        font-size: 10px;
+        color: red;
+    }
+}
+
+.cart-product-price {
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
+
+.cart-product-price buton {
+    margin: none;
+}
+
+.cart-product-price input {
+    width: 80px;
+    margin: none;
+    align-self: center;
+    text-align: center;
+}
+
+.MyProduct ::placeholder {
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+}
+
+
+
+button {
+    border: none;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 601px) {}
+
+@media screen and (max-width: 600px) {
+    button {
+        width: 10px;
+        height: 10px;
+        font-size: 10px;
+    }
+}
+
+.MyProduct textarea {
+  
+}
+
+@media screen and (min-width: 601px) {
+    .MyProduct textarea{
+    height: 100px;
+    width: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    textarea {
+    height: 50px;
+    width: auto;
+    }
+}

@@ -1,0 +1,46 @@
+.perfil {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.perfil h1 {
+    font-size: 24px;
+}
+
+.perfil main form {
+    margin-top: 20px;
+}
+
+.perfil label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+.perfil input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.perfil button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.perfil button:hover {
+    background-color: #555;
+}
+
+.perfil .produtos button{
+    margin-top: 2%;
+}
+
+

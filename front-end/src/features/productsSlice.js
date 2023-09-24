@@ -29,6 +29,13 @@ const productsSlice = createSlice({
             newTenis['img'] = "tenis4.jpg";
             state.items.push(newTenis);
         },
+        removeFromStore(state,action){
+            const nextItems = state.items.filter(
+                item => item.id !== action.payload.id
+            )
+            state.items = nextItems;
+    
+        }
     },
     extraReducers: {
         [productsFetch.pending]: (state, action) => {
@@ -44,5 +51,5 @@ const productsSlice = createSlice({
     }
 });
 
-export const { addToStore } = productsSlice.actions;
+export const { addToStore, removeFromStore } = productsSlice.actions;
 export default productsSlice.reducer;

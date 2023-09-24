@@ -32,6 +32,7 @@
 #cart-product-image {
     width: 40%;
 }
+
 .cart-product {
     display:flex;
     align-items: center;
@@ -39,23 +40,7 @@
 }
 
 
-#item-nome {
-    font-weight: bold;
-    font-size: 15px;
-  }
- 
-  @media screen and (min-width: 601px) {
-    #item-nome {
-        font-size: 15px;
-      
-    }      
-  }
-  @media screen and (max-width: 600px) {
-    #item-nome {
-        font-size: 10px;
-      
-    }
-  }
+
 
 #remover {
     border: none;
