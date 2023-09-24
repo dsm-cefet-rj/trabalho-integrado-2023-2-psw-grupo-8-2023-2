@@ -5,7 +5,7 @@ import "./editProducts.css";
 import Image from 'react-bootstrap/Image';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeFromStore, changeProductNome } from "../../features/productsSlice";
+import { removeFromStore, changeProductNome, changeProductPreço, changeProductDesc  } from "../../features/productsSlice";
 
 
 export const EditProducts = () => {
@@ -28,6 +28,29 @@ export const EditProducts = () => {
     };
 
 
+    const[newPreço, setNewPreço] = useState("");
+
+    const handleChangePreço = (event) => {
+        setNewPreço(event.target.value);
+    };
+
+    const handleChangeProductPreço = (preço,id) => {
+        const newProduto = {"id":id,"preço":preço}
+        dispatch(changeProductPreço(newProduto));
+    };
+
+
+    const[newDesc, setNewDesc] = useState("");
+
+    const handleChangeDesc = (event) => {
+        setNewDesc(event.target.value);
+    };
+
+    const handleChangeProductDesc = (desc,id) => {
+        const newProduto = {"id":id,"desc":desc}
+        dispatch(changeProductDesc(newProduto));
+    };
+
 
 
 
@@ -48,10 +71,10 @@ export const EditProducts = () => {
                                     </Container>
                                     </Container>
                                     <Container>
-                                    <textarea class="wideInput" id="descrição" >{product.desc}</textarea>
+                                    <textarea onChange={handleChangeDesc} class="wideInput" id="descrição" >{product.desc}</textarea>
                                     </Container>
                                     <Container>
-                                    <button >Editar descrição</button>
+                                    <button onClick={() => handleChangeProductDesc(newDesc,product.id)} >Editar descrição</button>
                                     </Container>
                                     
                                     <Container>
@@ -63,8 +86,8 @@ export const EditProducts = () => {
                             </Col>
 
                             <Col className="cart-product-price" >
-                                <input type='text' placeholder={product.preço}></input>
-                                <button>Editar Preço</button>
+                                <input onChange={handleChangePreço} type='text' placeholder={product.preço}></input>
+                                <button onClick={() => handleChangeProductPreço(newPreço,product.id)}>Editar Preço</button>
                             </Col>
 
 

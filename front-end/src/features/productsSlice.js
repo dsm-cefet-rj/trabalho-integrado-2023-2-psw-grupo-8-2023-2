@@ -37,7 +37,16 @@ const productsSlice = createSlice({
         changeProductNome(state,action) {
             const index = state.items.findIndex((item) => item.id === action.payload.id)
             state.items[index]["nome"] = action.payload.nome;
-        }
+        },
+        changeProductPreço(state,action) {
+            const index = state.items.findIndex((item) => item.id === action.payload.id)
+            state.items[index]["preço"] = action.payload.preço;
+        },
+        changeProductDesc(state,action) {
+            const index = state.items.findIndex((item) => item.id === action.payload.id)
+            state.items[index]["desc"] = action.payload.desc;
+        },
+        
     },
     extraReducers: {
         [productsFetch.pending]: (state, action) => {
@@ -53,5 +62,5 @@ const productsSlice = createSlice({
     }
 });
 
-export const { addToStore, removeFromStore, changeProductNome } = productsSlice.actions;
+export const { addToStore, removeFromStore, changeProductNome, changeProductPreço, changeProductDesc} = productsSlice.actions;
 export default productsSlice.reducer;
