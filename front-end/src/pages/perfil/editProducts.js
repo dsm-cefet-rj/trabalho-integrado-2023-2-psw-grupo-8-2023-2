@@ -3,10 +3,33 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import "./editProducts.css";
 import Image from 'react-bootstrap/Image';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { removeFromStore, changeProductNome } from "../../features/productsSlice";
 
 
 export const EditProducts = () => {
     const { items, status } = useSelector((state) => state.products);
+    const dispatch = useDispatch();
+
+    const[newNome, setNewNome] = useState("");
+
+    const handleChangeNome = (event) => {
+        setNewNome(event.target.value);
+    };
+
+    const handleChangeProductNome = (nome,id) => {
+        const newProduto = {"id":id,"nome":nome}
+        dispatch(changeProductNome(newProduto));
+    };
+
+    const handleRemoveFromStore = (id) => {
+        dispatch(removeFromStore(id));
+    };
+
+
+
+
 
     return (
         <>
@@ -19,9 +42,9 @@ export const EditProducts = () => {
                                 <Image src={require(`../../images/${product.img}`)} id='cart-product-image' fluid />
                                 <div className='nome-remove'>
                                     <Container>
-                                    <input type='text' placeholder={product.nome}></input>
+                                    <input onChange={handleChangeNome} type='text' placeholder={product.nome}></input>
                                     <Container>
-                                    <button>Editar Nome</button>
+                                    <button onClick={() => handleChangeProductNome(newNome,product.id)} >Editar Nome</button>
                                     </Container>
                                     </Container>
                                     <Container>
@@ -32,7 +55,7 @@ export const EditProducts = () => {
                                     </Container>
                                     
                                     <Container>
-                                    <button id='remover' >
+                                    <button onClick={() => handleRemoveFromStore(product.id)} id='remover' >
                                         Remover
                                     </button>
                                     </Container>

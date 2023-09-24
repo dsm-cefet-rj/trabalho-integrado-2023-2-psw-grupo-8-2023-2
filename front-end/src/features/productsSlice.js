@@ -22,7 +22,6 @@ const productsSlice = createSlice({
     initialState,
     reducers: {
         addToStore(state,action) {
-            console.log(action.payload);
             const lastId = state.items.length + 1;
             const newTenis = action.payload;
             newTenis['id'] = lastId;
@@ -31,10 +30,13 @@ const productsSlice = createSlice({
         },
         removeFromStore(state,action){
             const nextItems = state.items.filter(
-                item => item.id !== action.payload.id
+                item => item.id !== action.payload
             )
             state.items = nextItems;
-    
+        },
+        changeProductNome(state,action) {
+            const index = state.items.findIndex((item) => item.id === action.payload.id)
+            state.items[index]["nome"] = action.payload.nome;
         }
     },
     extraReducers: {
@@ -51,5 +53,5 @@ const productsSlice = createSlice({
     }
 });
 
-export const { addToStore, removeFromStore } = productsSlice.actions;
+export const { addToStore, removeFromStore, changeProductNome } = productsSlice.actions;
 export default productsSlice.reducer;
