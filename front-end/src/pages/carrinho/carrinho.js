@@ -105,6 +105,7 @@ export const Carrinho = () => {
                                         <span>Total </span>
                                         <span className='quantidade'>R$:{cart.cartTotalAmount}</span>
                                     </div>
+                                    <Link to="/"><Button style={{marginRight:"10px"}} variant='dark'>CONTINUAR COMPRANDO</Button></Link>
                                     <Link to="/FinalizarCompra"><Button variant="dark">FINALIZAR COMPRA</Button></Link>
                                 </div>
                             </div>
