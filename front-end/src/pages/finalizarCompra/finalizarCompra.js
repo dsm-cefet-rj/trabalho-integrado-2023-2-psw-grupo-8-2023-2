@@ -3,9 +3,16 @@ import React from "react";
 import Image from 'react-bootstrap/Image';
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Row, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { clearCart } from "../../features/cartSlice";
 export const FinalizarCompra = () => {
     const cart = useSelector((state) => state.cart);
 
+    const dispatch = useDispatch();
+
+    const handleClearCart = () => {
+        dispatch(clearCart())
+    }
 
     return (
         <div className="container-compra">
@@ -64,7 +71,7 @@ export const FinalizarCompra = () => {
                 <span className='quantidade'>R$:{cart.cartTotalAmount}</span>
             </div>
             <div>
-            <Button variant="dark">FINALIZAR COMPRA</Button>
+            <Link to="/compraFinalizada"><Button onClick={()=>handleClearCart()} variant="dark">FINALIZAR COMPRA</Button></Link>
             </div>
         </div>
 
