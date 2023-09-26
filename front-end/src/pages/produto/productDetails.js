@@ -18,10 +18,9 @@ export default function ProductDetails() {
   const dispatch = useDispatch();
   const { items, status } = useSelector((state) => state.products);
 
-  // const {newComment,setNewComment} = useState('');
   const msg = useSelector((state) => state.comment.comments)
   console.log(msg)
-  const [comment, setComment] = useState(""); // Inicializa o estado do input com uma string vazia
+  const [comment, setComment] = useState(""); 
 
   console.log(status);
 
@@ -29,19 +28,16 @@ export default function ProductDetails() {
   const product = items.find((element) => element.id == id);
 
   const handleCommentChange = (e) => {
-    setComment(e.target.value); // Atualiza o estado do input com o valor do campo de texto
+    setComment(e.target.value); 
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aqui você pode despachar a action para adicionar a mensagem ao estado do Redux,
-    // incluindo o id do produto associado.
     dispatch(addComment({ productId: product.id, comment }));
     setComment("");
   };
 
   const handleRemoveComment = (productId, index) => {
-    // Aqui você pode despachar uma ação para remover o comentário do estado do Redux.
     dispatch(removeComment({ productId, index }));
   };
 
