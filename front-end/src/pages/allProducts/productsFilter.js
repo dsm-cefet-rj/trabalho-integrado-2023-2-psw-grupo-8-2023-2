@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 export const ProductsFilter = (props) => {
-    const { id, nome, preço, img, tipo } = props.data
+    const { id, nome, preço, img, tipo, tamanho } = props.data
 
     
     if (tipo === props.tipo) {
@@ -16,6 +16,7 @@ export const ProductsFilter = (props) => {
                 <div className='description'>
                     <p> <b> {nome} </b> </p>
                     <p> R${preço} </p>
+                    <p> Tamanho: {tamanho} </p>
                 </div>
             </div>
             </Link>
@@ -31,6 +32,7 @@ export const ProductsFilter = (props) => {
                 <div className='description'>
                     <p> <b> {nome} </b> </p>
                     <p> R${preço} </p>
+                    <p> Tamanho: {tamanho} </p>
                 </div>
             </div>
             </Link>

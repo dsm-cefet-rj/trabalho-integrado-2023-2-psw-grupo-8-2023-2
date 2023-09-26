@@ -12,6 +12,7 @@ import {Carrinho} from './pages/carrinho/carrinho'
 import {AdicionarVenda} from './pages/adicionarVenda/adicionarVenda'
 import { Perfil } from './pages/perfil/perfil';
 import { EditProducts } from './pages/perfil/editProducts';
+import { FinalizarCompra } from './pages/finalizarCompra/finalizarCompra';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/AdicionarVenda" element={<AdicionarVenda/>}/>
           <Route path="/Perfil" element={<Perfil/>}/>
           <Route path="/MeusProdutos" element={<EditProducts/>}/>
+          <Route path="/FinalizarCompra" element={<FinalizarCompra/>}/>
         </Routes>
       </Router>
     </div>

@@ -1,0 +1,65 @@
+.container-compra body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container-compra {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-compra h1 {
+    text-align: center;
+}
+
+.container-compra .payment-options {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container-compra .payment-option {
+    flex-basis: calc(33.33% - 20px);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.container-compra .payment-option:hover {
+    transform: scale(1.05);
+}
+
+.container-compra .payment-icon {
+    font-size: 36px;
+    text-align: center;
+}
+
+.container-compra .payment-title {
+    text-align: center;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .payment-option {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-option {
+        flex-basis: calc(100% - 20px);
+    }
+}
+.compra-total {
+    margin-top: 50px;
+    font-size: 35px;
+    font-weight: bold;
+}

@@ -10,6 +10,8 @@ import Button from 'react-bootstrap/Button';
 import { clearCart, decreaseCart, getTotal, increaseCart, removeFromCart } from '../../features/cartSlice';
 import { useEffect } from 'react';
 
+
+
 export const Carrinho = () => {
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
@@ -67,8 +69,10 @@ export const Carrinho = () => {
 
                                             <Col className="cart-product">
                                             <Image src={require(`../../images/${cartItem.img}`)}  id='cart-product-image' fluid />
+                                            
                                                 <div className='nome-remove'>
                                                     <h3 id="item-nome">{cartItem.nome}</h3>
+                                                    <h3 id="item-nome">Tamanho: {cartItem.tamanho}</h3>
                                                     <button id='remover' onClick= {( ) => handleRemoveFromCart(cartItem)}>
                                                         Remover
                                                     </button>
@@ -101,7 +105,7 @@ export const Carrinho = () => {
                                         <span>Total </span>
                                         <span className='quantidade'>R$:{cart.cartTotalAmount}</span>
                                     </div>
-                                    <Button variant="dark">FINALIZAR COMPRA</Button>
+                                    <Link to="/FinalizarCompra"><Button variant="dark">FINALIZAR COMPRA</Button></Link>
                                 </div>
                             </div>
 
