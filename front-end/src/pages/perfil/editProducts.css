@@ -76,7 +76,7 @@
 
 
 
-button {
+.MyProduct button {
     border: none;
     font-weight: bold;
 }
@@ -84,7 +84,7 @@ button {
 @media screen and (min-width: 601px) {}
 
 @media screen and (max-width: 600px) {
-    button {
+    .MyProduct button {
         width: 10px;
         height: 10px;
         font-size: 10px;
