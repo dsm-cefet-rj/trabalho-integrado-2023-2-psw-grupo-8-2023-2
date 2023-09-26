@@ -132,7 +132,7 @@ export default function ProductDetails() {
           <div>
             <Col>
               {msg[product.id] && msg[product.id].map((comment, index) => (
-                <Row key={index} style={{ border: "2px solid #000", padding: "10px", marginBottom: "10px" }}>
+                <Row key={index} style={{ border: "2px solid #000", padding: "10px", marginBottom: "10px", borderRadius: "10px", marginTop: "5px"}}>
                   {index === editingIndex ? (
                     <>
                       {/* <input
@@ -144,8 +144,10 @@ export default function ProductDetails() {
                     </>
                   ) : (
                     <>
-                      {comment}
-                      {/* <button onClick={() => handleEdit(index)}>Editar</button> */}
+                      <div style={{overflowWrap:"break-word"}}>
+                        {comment}
+                        {/* <button onClick={() => handleEdit(index)}>Editar</button> */}
+                      </div>
                     </>
                   )}
                   <button onClick={() => handleRemoveComment(product.id, index)}>Remover</button>
