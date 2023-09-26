@@ -21,12 +21,18 @@ export const AdicionarVenda = () => {
 
 
     const[newPreço, setNewPreço] = useState(0);
-    const[newTipo, setNewTipo] = useState("masculino");
+    
 
-    const handleAddToStore = (nome, preço) => {
-        const newTenis = {"nome":nome, "tipo":"masculino", "preço":preço}
+    const handleAddToStore = (nome, preço, tipo) => {
+        const newTenis = {"nome":nome, "tipo":tipo, "preço":preço}
         dispatch(addToStore(newTenis));
     };
+
+    const[newTipo, setNewTipo] = useState("masculino");
+
+    const handleChangeTipo = (event) => {
+      setNewTipo(event.target.value);
+  };
 
     return (
         <>
@@ -63,13 +69,13 @@ export const AdicionarVenda = () => {
         required=""
       />
       <label htmlFor="tipo">Tipo:</label>
-      <select id="tipo" name="tipo">
-        <option value="unissex">Infantil</option>
+      <select id="tipo" name="tipo" onChange={handleChangeTipo}>
+        <option value="infantil">Infantil</option>
         <option value="masculino">Masculino</option>
         <option value="feminino">Feminino</option>
         {/* Adicione mais opções conforme necessário */}
       </select>
-      <Link to="/" > <button onClick={() => handleAddToStore(newNome,newPreço)} >Adicionar Tênis</button> </Link>
+      <Link to="/" > <button onClick={() => handleAddToStore(newNome,newPreço, newTipo)} >Adicionar Tênis</button> </Link>
     </form>
   </div>
 </main>

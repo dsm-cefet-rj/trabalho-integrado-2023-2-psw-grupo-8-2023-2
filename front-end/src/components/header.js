@@ -10,6 +10,7 @@ import { useState } from "react";
 import { PRODUCTS } from "../data";
 import { useSelector } from "react-redux";
 
+
 export const Header = () => {
     return (
         <div className="header">
@@ -77,11 +78,12 @@ const HeaderCategories = () => {
 
 const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState("");
+    const { items, status } = useSelector((state) => state.products);
 
     return (
         <div className="searchResults">
           <input type="text" placeholder='O que você procura?' onChange={event => { setSearchTerm(event.target.value) }} />
-          {PRODUCTS.filter((val) => {
+          {items.filter((val) => {
             if (searchTerm === "") {
               return ""
             } else if (val.nome.toLowerCase().includes(searchTerm.toLowerCase())) {
