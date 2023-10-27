@@ -5,23 +5,43 @@ import "./editProducts.css";
 import Image from 'react-bootstrap/Image';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeFromStore, changeProductNome, changeProductPreço, changeProductDesc  } from "../../features/productsSlice";
-
+import { removeFromStore, changeProductNome, changeProductPreço, changeProductDesc, updateProductNome, productsFetch  } from "../../features/productsSlice";
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const EditProducts = () => {
+
+    const navigate = useNavigate();
+
     const { items, status } = useSelector((state) => state.products);
     const dispatch = useDispatch();
     const[newNome, setNewNome] = useState("");
     const handleChangeNome = (event) => {
         setNewNome(event.target.value);
     };
+
+    useEffect(() => {
+        dispatch(productsFetch());
+    },[items]);
+
     const handleChangeProductNome = (nome,id) => {
         const newProduto = {"id":id,"nome":nome}
-        dispatch(changeProductNome(newProduto));
+
+        const index = items.findIndex((item) => item.id === id)
+        const tipo = items[index]['tipo'];
+        const preço = items[index]['preço'];
+        const img = items[index]['img'];
+        const desc = items[index]['desc'];
+        const tamanho = items[index]['tamanho'];
+
+        dispatch(updateProductNome({"id":id,"nome":nome,'tipo':tipo,'preço':preço,'img':img,'desc':desc,'tamanho':tamanho}));
     };
+
     const handleRemoveFromStore = (id) => {
         dispatch(removeFromStore(id));
     };
+
+
 
 
     const[newPreço, setNewPreço] = useState("");
@@ -33,6 +53,7 @@ export const EditProducts = () => {
     const handleChangeProductPreço = (preço,id) => {
         const newProduto = {"id":id,"preço":preço}
         dispatch(changeProductPreço(newProduto));
+
     };
 
 
@@ -46,6 +67,8 @@ export const EditProducts = () => {
         const newProduto = {"id":id,"desc":desc}
         dispatch(changeProductDesc(newProduto));
     };
+
+    
 
 
 
