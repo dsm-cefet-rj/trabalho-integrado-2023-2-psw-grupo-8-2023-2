@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
 
+const productAdapter = createEntityAdapter();
 
 const initialState = {
     items: [],
@@ -15,7 +16,7 @@ export const productsFetch = createAsyncThunk(
 );
 
 export const updateProduct = createAsyncThunk(
-    "products/udateProductNome",
+    "products/updateProductNome",
     async(produto) => {
         let response = await fetch("http://localhost:3004/meusProdutos/" + produto.id,
         {
@@ -28,7 +29,26 @@ export const updateProduct = createAsyncThunk(
         if(response.ok) {
             return produto;
         } else {
-            return new Error ("Erro ao atualizar nome do produto")
+            return new Error ("Erro ao atualizar produto")
+        }
+    }
+)
+
+export const addNewProduct = createAsyncThunk(
+    "products/addNewProduct",
+    async(produto) => {
+        let response = await fetch("http://localhost:3004/meusProdutos/",
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(produto)
+        });
+        if(response.ok) {
+            return produto;
+        } else {
+            return new Error ("Erro ao adicionar movo produto")
         }
     }
 )
@@ -38,9 +58,11 @@ const productsSlice = createSlice({
     initialState,
     reducers: {
         addToStore(state, action) {
-            const lastId = state.items.length + 1;
+            const size = state.items.length;
+            const lastId = state.items[size-1]['id'];
+
             const newTenis = action.payload;
-            newTenis['id'] = lastId;
+            newTenis['id'] = lastId+1;
             newTenis['img'] = "tenis4.jpg";
             state.items.push(newTenis);
         },
@@ -68,6 +90,9 @@ const productsSlice = createSlice({
             state.status = "rejected"
         },
         [updateProduct.fulfilled]: (state, action) => {
+            changeProduct(state,action.payload)
+        },
+        [addNewProduct.fulfilled]: (state, action) => {
             changeProduct(state,action.payload)
         },
     }

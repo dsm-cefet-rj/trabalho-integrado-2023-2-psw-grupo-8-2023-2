@@ -2,11 +2,11 @@
   "meusProdutos": [
     {
       "id": 1,
-      "nome": "TESTES TESTES ",
+      "nome": "222333123123",
       "tipo": "infantil",
-      "preço": "666",
+      "preço": 149.99,
       "img": "tenis1.jpg",
-      "desc": "TESTES TESTESTESTES",
+      "desc": "Air Jordan 1 Retro High OG “Stage Haze Para os fãs do MJ, nunca tem erro quando a Nike lança um modelo no color blocking “Black Toe”. A nova edição a receber esse tratamento é o AJ1 “Stage Haze”. O sneaker é construído sobre uma entressola branca de borracha, e possui estrutura de couro predominantemente branco e sobreposições em tons e materiais que se contrastam. A região do calcanhar é executada em suede cinza, enquanto o couro craquelado preto se estende do colar do calcanhar até a toebox. Para acrescentar ainda mais contraste a esse sneaker irado, as palmilhas e escrita Nike Air da língua são rosas.",
       "tamanho": 41
     },
     {
@@ -53,6 +53,14 @@
       "img": "tenis5.jpg",
       "desc": "Proteção contra impacto, sensação de firmeza Ideal para o corredor que anseia por proteção contra impactos, o tênis masculino Nike Shox NZ foi desenvolvido com um cabedal confortável, cadarços firmes e entressola amortecida. Referência no mercado esportivo e casual, a Nike é sinônimo de conforto, estilo e praticidade. Ao longo da história, a marca desenvolveu modelos que se tornaram verdadeiros ícones; um deles é o clássico e atemporal Nike Shox. Com um sistema único de amortecimento, composto por quatro colunas adaptáveis com placas moderadoras, o tênis proporciona uma pisada flexível e anatômica. O resultado é um tênis versártil que acompanha caminhadas, corridas ou simplesmente o lifestyle de quem aposta no visual.",
       "tamanho": 38
+    },
+    {
+      "nome": "tenisBrabo",
+      "tipo": "masculino",
+      "preço": "200",
+      "tamanho": "32",
+      "desc": "41",
+      "id": 7
     }
   ]
 }

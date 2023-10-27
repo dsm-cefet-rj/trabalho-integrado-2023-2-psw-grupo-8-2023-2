@@ -19,6 +19,7 @@ export const EditProducts = () => {
         setNewNome(event.target.value);
     };
 
+
     useEffect(() => {
         dispatch(productsFetch());
     },[items]);
