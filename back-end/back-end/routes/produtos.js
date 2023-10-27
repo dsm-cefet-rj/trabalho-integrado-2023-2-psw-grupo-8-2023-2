@@ -18,12 +18,42 @@ let produtos = [
 ];
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.route('/')
+.get((req, res, next) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.json(produtos);
+})
+
+.post((req, res, next) => {
+  produtos.push(req.body);
+
+
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  res.json(req.body);
 });
 
+router.route('/:id')
+.delete((req,res,next) => {
+
+  produtos = produtos.filter(function(value,index,arr){
+    return value.id != req.params.id;
+  });
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  res.json(req.params.id);
+})
+
+.put((req, res, next) => {
+  let index = req.body.id-1
+  produtos.splice(index,1,req.body);
+
+
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  res.json(req.body);
+});
 
 
 module.exports = router;
