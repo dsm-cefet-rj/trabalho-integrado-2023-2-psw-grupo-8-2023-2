@@ -5,7 +5,7 @@ import "./editProducts.css";
 import Image from 'react-bootstrap/Image';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeFromStore, updateProduct, productsFetch  } from "../../features/productsSlice";
+import { removeFromStore, updateProduct, productsFetch, removeProduct} from "../../features/productsSlice";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -53,7 +53,7 @@ export const EditProducts = () => {
     };
 
     const handleRemoveFromStore = (id) => {
-        dispatch(removeFromStore(id));
+        dispatch(removeProduct({"id":id}));
     };
 
     const[newPreço, setNewPreço] = useState("");

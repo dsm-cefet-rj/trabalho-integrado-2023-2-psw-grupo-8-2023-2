@@ -16,7 +16,7 @@ export const productsFetch = createAsyncThunk(
 );
 
 export const updateProduct = createAsyncThunk(
-    "products/updateProductNome",
+    "products/updateProduct",
     async(produto) => {
         let response = await fetch("http://localhost:3004/meusProdutos/" + produto.id,
         {
@@ -52,6 +52,22 @@ export const addNewProduct = createAsyncThunk(
         }
     }
 )
+export const removeProduct = createAsyncThunk(
+    "products/removeProduc",
+    async(produto) => {
+        let response = await fetch("http://localhost:3004/meusProdutos/" + produto.id,
+        {
+            method: 'DELETE',
+            headers: {
+                'Content-Type':'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(produto)
+        });
+        if(!response.ok) {
+            return new Error ("Erro ao remover produto")
+        }
+    }
+)
 
 const productsSlice = createSlice({
     name: "products",
@@ -63,7 +79,6 @@ const productsSlice = createSlice({
 
             const newTenis = action.payload;
             newTenis['id'] = lastId+1;
-            newTenis['img'] = "tenis4.jpg";
             state.items.push(newTenis);
         },
         removeFromStore(state, action) {
@@ -94,6 +109,9 @@ const productsSlice = createSlice({
         },
         [addNewProduct.fulfilled]: (state, action) => {
             changeProduct(state,action.payload)
+        },
+        [removeProduct.fulfilled]: (state, action) => {
+            removeFromStore(state,action.payload)
         },
     }
 });

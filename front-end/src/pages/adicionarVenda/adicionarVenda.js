@@ -32,7 +32,7 @@ export const AdicionarVenda = () => {
   }, [items]);
 
   const handleAddToStore = (nome, preço, tipo, tamanho, desc) => {
-    const newTenis = { "nome": nome, "tipo": tipo, "preço": preço, "tamanho": tamanho, "desc": desc }
+    const newTenis = { "nome": nome, "tipo": tipo, "preço": preço, "tamanho": tamanho, "desc": desc, "img":"tenis5.jpg"}
     dispatch(addNewProduct(newTenis));
   };
 
@@ -116,7 +116,7 @@ export const AdicionarVenda = () => {
               <option value="feminino">Feminino</option>
               {/* Adicione mais opções conforme necessário */}
             </select>
-            <Link to="/" > <button onClick={() => handleAddToStore(newNome, newPreço, newTipo, newTamanho, newDesc)} >Adicionar Tênis</button> </Link>
+            <Link to="/Perfil" > <button onClick={() => handleAddToStore(newNome, newPreço, newTipo, newTamanho, newDesc)} >Adicionar Tênis</button> </Link>
           </form>
         </div>
       </main>
