@@ -2,11 +2,11 @@
   "meusProdutos": [
     {
       "id": 1,
-      "nome": "aaaaaaaaaa",
+      "nome": "TESTES TESTES ",
       "tipo": "infantil",
-      "preço": 149.99,
+      "preço": "666",
       "img": "tenis1.jpg",
-      "desc": "Air Jordan 1 Retro High OG “Stage Haze Para os fãs do MJ, nunca tem erro quando a Nike lança um modelo no color blocking “Black Toe”. A nova edição a receber esse tratamento é o AJ1 “Stage Haze”. O sneaker é construído sobre uma entressola branca de borracha, e possui estrutura de couro predominantemente branco e sobreposições em tons e materiais que se contrastam. A região do calcanhar é executada em suede cinza, enquanto o couro craquelado preto se estende do colar do calcanhar até a toebox. Para acrescentar ainda mais contraste a esse sneaker irado, as palmilhas e escrita Nike Air da língua são rosas.",
+      "desc": "TESTES TESTESTESTES",
       "tamanho": 41
     },
     {
