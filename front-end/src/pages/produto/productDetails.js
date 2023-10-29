@@ -65,9 +65,12 @@ export default function ProductDetails() {
   //   setEditedComment("");
   // };
 
+
   if (status === "pending" || status == "null") {
     return (<div>LOADING</div>)
-  } else {
+  } if (product===undefined){
+    return (<div>PRODUTO NÃO ENCONTRADO</div>) 
+  }else {
     return (<>
       <Container>
         <h3><b>{product.nome}</b></h3>
