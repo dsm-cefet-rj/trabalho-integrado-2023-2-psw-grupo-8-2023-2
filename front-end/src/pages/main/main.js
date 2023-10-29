@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 export const Main = () => {
     const { items, status } = useSelector((state) => state.products);
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         dispatch(productsFetch());
       }, [items]);

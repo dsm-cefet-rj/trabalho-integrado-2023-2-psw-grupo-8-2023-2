@@ -8,7 +8,7 @@ const Produtos = require('../models/produtos');
 
 
 
-let produtos = [
+/* let produtos = [
   { "tipo": "masculino", "id": 1, "nome": "Tênis Nike Sb Chron 2 Preto/Branco", "preço": 199.99, "img": "tenis.jpg", "desc": "Tênis da linha SB Chron 2, da marca Nike. Modelo cano baixo com estilo casual, perfeito para os amantes do skateboard! Confeccionado em lona na cor preta, ele possui aplicação do símbolo icônico -Swoosh- em suas laterais e o logo da marca em branco na língua. Seu fechamento é em cadarço e solado e vira em borracha.Possui forma normal, recomenda-se comprar número habitual. Código: DM3494-001.Atenção: A cor do produto pode variar devido as configurações do monitor e o número de passadores podem variar conforme numeração do tênis. Todos os produtos que vendemos são originais, acompanhados de nota fiscal. Garantia contra defeito de fabricação.", "tamanho": 40 },
 
   { "tipo": "infantil", "id": 2, "nome": "Air Jordan 1 Retro High", "preço": 149.99, "img": "tenis1.jpg", "desc": "Air Jordan 1 Retro High OG “Stage Haze Para os fãs do MJ, nunca tem erro quando a Nike lança um modelo no color blocking “Black Toe”. A nova edição a receber esse tratamento é o AJ1 “Stage Haze”. O sneaker é construído sobre uma entressola branca de borracha, e possui estrutura de couro predominantemente branco e sobreposições em tons e materiais que se contrastam. A região do calcanhar é executada em suede cinza, enquanto o couro craquelado preto se estende do colar do calcanhar até a toebox. Para acrescentar ainda mais contraste a esse sneaker irado, as palmilhas e escrita Nike Air da língua são rosas.", "tamanho": 41 },
@@ -21,13 +21,11 @@ let produtos = [
 
   { "tipo": "masculino", "id": 6, "nome": "Tênis Nike Shox", "preço": 169.99, "img": "tenis5.jpg", "desc": "Proteção contra impacto, sensação de firmeza Ideal para o corredor que anseia por proteção contra impactos, o tênis masculino Nike Shox NZ foi desenvolvido com um cabedal confortável, cadarços firmes e entressola amortecida. Referência no mercado esportivo e casual, a Nike é sinônimo de conforto, estilo e praticidade. Ao longo da história, a marca desenvolveu modelos que se tornaram verdadeiros ícones; um deles é o clássico e atemporal Nike Shox. Com um sistema único de amortecimento, composto por quatro colunas adaptáveis com placas moderadoras, o tênis proporciona uma pisada flexível e anatômica. O resultado é um tênis versártil que acompanha caminhadas, corridas ou simplesmente o lifestyle de quem aposta no visual.", "tamanho": 38 }
 ];
+*/
 
 /* GET users listing. */
 router.route('/')
   .get((req, res, next) => {
-
-
-
     Produtos.find({})
       .then((produtosBanco) => {
         res.statusCode = 200;
@@ -36,41 +34,44 @@ router.route('/')
       }, (err) => next(err))
       .catch((err) => next(err));
     
-
-
-  res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.json(produtos);
   })
 
   .post((req, res, next) => {
-    produtos.push(req.body);
 
-
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.json(req.body);
+    Produtos.create(req.body)
+    .then((produto) => {
+      console.log("Produto criado", produto);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json(produto);
+    }, (err) => next(err))
+    .catch((err) => next(err));
+    
   });
 
 router.route('/:id')
   .delete((req, res, next) => {
-
-    produtos = produtos.filter(function (value, index, arr) {
-      return value.id != req.params.id;
-    });
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.json(req.params.id);
+    Produtos.findByIdAndRemove(req.params.id)
+      .then((resp) => {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(resp.id);
+      }, (err) => next(err))
+      .catch((err) => next(err));
   })
 
   .put((req, res, next) => {
-    let index = req.body.id - 1
-    produtos.splice(index, 1, req.body);
 
+    Produtos.findByIdAndUpdate(req.params.id, {
+      $set: req.body
+    }, { new: true})
+    .then((produto) => {
+      req.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json(produto);
+    }, (err) => next(err))
+    .catch((err) => next(err));
 
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.json(req.body);
   });
 
 

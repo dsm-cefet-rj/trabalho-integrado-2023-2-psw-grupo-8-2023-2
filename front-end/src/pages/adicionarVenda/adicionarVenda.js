@@ -35,6 +35,9 @@ export const AdicionarVenda = () => {
     const newTenis = { "nome": nome, "tipo": tipo, "preço": preço, "tamanho": tamanho, "desc": desc, "img":"tenis5.jpg"}
     dispatch(addNewProduct(newTenis));
   };
+  
+
+
 
   const [newTipo, setNewTipo] = useState("masculino");
 
