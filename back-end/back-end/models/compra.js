@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const compraSchema = new Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Usuario',
         required: false, //mudar quando tiver rota usuario
 
     },

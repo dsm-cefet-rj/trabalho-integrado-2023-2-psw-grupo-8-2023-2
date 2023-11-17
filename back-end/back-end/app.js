@@ -2,10 +2,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session')
+var FileStore = require('session-file-store')(session);
+
 
 var indexRouter = require('./routes/index');
 var meusProdutosRouter = require('./routes/produtos');
 var comprasRouter = require('./routes/compra');
+var usuarioRouter = require('./routes/usuario')
 
 var app = express();
 
@@ -21,43 +25,59 @@ connect.then((db) => {
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+//app.use(cookieParser(11111 - 11111 - 11111));
 
-/* 
-function auth (req, res, next){
-    console.log(req.headers);
-    var authHeader = req.headers.authorization;
-    if (!authHeader) {
-        var err = new Error('You are not authenticaded!');
-        res.setHeader('WWW-Authenticate', 'Basic');
-        err.status = 401;
-        next(err);
-        return;
-    }
 
+//////////////
+
+app.use(session({
+    name: 'session-id',
+    secret: '11111-11111',
+    saveUninitialized: false,
+    resave: false,
+    store: new FileStore()
+}));
+
+////
+
+
+
+
+////
+
+function auth(req, res, next) {
+    console.log(req.session);
     
-    var auth = new Buffer.from(authHeader.split(' ')[1], 'base64').toString().split(':');
-    var user = auth[0];
-    var pass = auth[1];
-    if ( user == 'admin' && pass == 'password') {
-        next(); // authorized
+    if(!req.session.user) {
+        var err = new Error ('Você não está autenticado!');
+        err.status = 403;
+        return next (err);
     } else {
-        var err = new Error('You are not authenticaded! ');
-        res.setHeader('WWW-Authenticate', 'Basic');
-        err.status = 401;
-        next(err);
+        if (req.session.user === 'Autenticado') {
+            next();
+        }
+        else {
+            var err = new Error ('Você não está autenticado');
+            err.status = 403;
+            return next(err);
+        }
     }
 }
 
 
-app.use(auth);
-*/
+app.use('/', indexRouter);
+app.use('/usuario', usuarioRouter);
+app.use('/meusProdutos', meusProdutosRouter);
 
+
+app.use(auth);
+
+app.use('/compras', comprasRouter);
+////////////
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/meusProdutos', meusProdutosRouter);
-app.use('/compras', comprasRouter);
+
+
 
 
 module.exports = app;
