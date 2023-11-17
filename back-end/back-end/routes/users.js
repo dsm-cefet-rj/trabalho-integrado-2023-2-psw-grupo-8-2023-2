@@ -10,7 +10,7 @@ const passport = require('passport');
 
 
 router.post('/signup', (req, res, next) => {
-    User.register(new User({username: req.body.username}), req.body.password, 
+    User.register(new User({username: req.body.username, email: req.body.email, cpf: req.body.cpf}), req.body.password, 
     (err, user) => {
         if(err) {
             res.statusCode = 500;

@@ -7,6 +7,14 @@ var User = new Schema({
   admin:{
       type: Boolean,
       default: false
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  cpf: {
+    type: String,
+    required: true
   }
 });
 
