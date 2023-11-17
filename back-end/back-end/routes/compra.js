@@ -5,10 +5,11 @@ const bodyPaser = require('body-parser');
 router.use(bodyPaser.json());
 router.use(cors());
 const Compras = require('../models/compra');
+var authenticate = require('../authenticate');
 
 
 router.route('/')
-    .get((req, res, next) => {
+    .get(authenticate.verifyUser,(req, res, next) => {
         Compras.find({})
             .then((comprasBanco) => {
                 res.statusCode = 200;
@@ -19,7 +20,7 @@ router.route('/')
 
     })
 
-    .post((req, res, next) => {
+    .post(authenticate.verifyUser, (req, res, next) => {
         Compras.create(req.body)
             .then((compra) => {
                 console.log("Compra criada", compra);

@@ -5,8 +5,7 @@ const bodyPaser = require('body-parser');
 router.use(bodyPaser.json());
 router.use(cors());
 const Produtos = require('../models/produtos');
-
-
+var authenticate = require('../authenticate');
 
 /* let produtos = [
   { "tipo": "masculino", "id": 1, "nome": "Tênis Nike Sb Chron 2 Preto/Branco", "preço": 199.99, "img": "tenis.jpg", "desc": "Tênis da linha SB Chron 2, da marca Nike. Modelo cano baixo com estilo casual, perfeito para os amantes do skateboard! Confeccionado em lona na cor preta, ele possui aplicação do símbolo icônico -Swoosh- em suas laterais e o logo da marca em branco na língua. Seu fechamento é em cadarço e solado e vira em borracha.Possui forma normal, recomenda-se comprar número habitual. Código: DM3494-001.Atenção: A cor do produto pode variar devido as configurações do monitor e o número de passadores podem variar conforme numeração do tênis. Todos os produtos que vendemos são originais, acompanhados de nota fiscal. Garantia contra defeito de fabricação.", "tamanho": 40 },
@@ -36,7 +35,7 @@ router.route('/')
     
   })
 
-  .post((req, res, next) => {
+  .post(authenticate.verifyUser, (req, res, next) => {
 
     Produtos.create(req.body)
     .then((produto) => {
@@ -50,7 +49,7 @@ router.route('/')
   });
 
 router.route('/:id')
-  .delete((req, res, next) => {
+  .delete(authenticate.verifyUser, (req, res, next) => {
     Produtos.findByIdAndRemove(req.params.id)
       .then((resp) => {
         res.statusCode = 200;
@@ -60,7 +59,7 @@ router.route('/:id')
       .catch((err) => next(err));
   })
 
-  .put((req, res, next) => {
+  .put(authenticate.verifyUser, (req, res, next) => {
 
     Produtos.findByIdAndUpdate(req.params.id, {
       $set: req.body
