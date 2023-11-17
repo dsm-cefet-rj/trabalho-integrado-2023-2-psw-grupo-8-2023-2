@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var meusProdutosRouter = require('./routes/produtos');
+var comprasRouter = require('./routes/compra');
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+/* 
 function auth (req, res, next){
     console.log(req.headers);
     var authHeader = req.headers.authorization;
@@ -33,6 +35,7 @@ function auth (req, res, next){
         return;
     }
 
+    
     var auth = new Buffer.from(authHeader.split(' ')[1], 'base64').toString().split(':');
     var user = auth[0];
     var pass = auth[1];
@@ -46,14 +49,15 @@ function auth (req, res, next){
     }
 }
 
+
 app.use(auth);
+*/
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/meusProdutos', meusProdutosRouter);
-
-
+app.use('/compras', comprasRouter);
 
 
 module.exports = app;
