@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
 
 
 const initialState = {
@@ -6,6 +6,28 @@ const initialState = {
     cartTotalQuantity: 0,
     cartTotalAmount: 0,
 };
+
+export const addNovaCompra = createAsyncThunk(
+    'compras/addNovaCompra',
+    async (compraData) => {
+      const response = await fetch('http://localhost:3004/compras/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(compraData),
+      });
+  
+      if (response.ok) {
+        const compra = await response.json();
+        return compra;
+      } else {
+        throw new Error('Erro ao adicionar nova compra');
+      }
+    }
+  );
+
+
 
 const cartSlice = createSlice({
     name: "cart",
@@ -65,7 +87,13 @@ const cartSlice = createSlice({
             state.cartTotalAmount = total;
             state.cartTotalQuantity = quantity;
         }
+    },
+    extraReducers: {
+        [addNovaCompra.fulfilled]: (state, action) => {
+            
+        },
     }
+
 });
 
 

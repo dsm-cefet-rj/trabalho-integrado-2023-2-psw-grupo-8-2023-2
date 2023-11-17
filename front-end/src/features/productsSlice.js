@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const productsFetch = createAsyncThunk(
-    "products/productsFetch", //`projetos/fetchProjetos
+    "products/productsFetch", 
     async () => {
         const response = await (await fetch("http://localhost:3004/meusProdutos")).json()
         return response

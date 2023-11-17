@@ -20,25 +20,15 @@ router.route('/')
     })
 
     .post((req, res, next) => {
-        const userId = req.body.userId; // Certifique-se de que userId é enviado no corpo da solicitação
-        const items = req.body.items; // Certifique-se de que items é enviado no corpo da solicitação
-        const totalAmount = req.body.totalAmount; // Certifique-se de que totalAmount é enviado no corpo da solicitação
-
-        // Crie um novo documento de compra usando o modelo do Mongoose
-        const novaCompra = new PurchaseModel({
-            userId: userId,
-            items: items,
-            total: totalAmount,
-        });
-
-        // Salve a nova compra no banco de dados
-        novaCompra.save()
+        Compras.create(req.body)
             .then((compra) => {
-                res.statusCode = 201;
+                console.log("Compra criada", compra);
+                res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
                 res.json(compra);
-            })
+            }, (err) => next(err))
             .catch((err) => next(err));
+
     });
 
 

@@ -7,7 +7,7 @@ import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { clearCart, decreaseCart, getTotal, increaseCart, removeFromCart } from '../../features/cartSlice';
+import { clearCart, decreaseCart, getTotal, increaseCart, removeFromCart, addNovaCompra } from '../../features/cartSlice';
 import { useEffect } from 'react';
 
 
@@ -36,7 +36,21 @@ export const Carrinho = () => {
         dispatch(clearCart())
     }
 
-    
+    const handleAddNovaCompra = () => {
+        let itemsComprados = []
+        cart.cartItems.map((item) => {
+            let novoItem = {productId: item.id, quantidade: item.cartQuantity, preço: item.preço}
+            itemsComprados.push(novoItem);
+        })
+       
+        const novaCompra = {
+            items: itemsComprados,
+            total: cart.cartTotalAmount,
+        };
+        console.log(novaCompra)
+        dispatch(addNovaCompra(novaCompra));
+      };
+
 
     return (
         <>
@@ -106,7 +120,7 @@ export const Carrinho = () => {
                                         <span className='quantidade'>R$:{cart.cartTotalAmount}</span>
                                     </div>
                                     <Link to="/"><Button style={{marginRight:"10px"}} variant='dark'>CONTINUAR COMPRANDO</Button></Link>
-                                    <Link to="/FinalizarCompra"><Button variant="dark">FINALIZAR COMPRA</Button></Link>
+                                    <Link to="/FinalizarCompra"><Button onClick={() => handleAddNovaCompra()}variant="dark">FINALIZAR COMPRA</Button></Link>
                                 </div>
                             </div>
 
