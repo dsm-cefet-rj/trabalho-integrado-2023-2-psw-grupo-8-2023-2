@@ -4,12 +4,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session')
 var FileStore = require('session-file-store')(session);
+var passport = require('passport');
+var authenticate = require('./authenticate');
+
 
 
 var indexRouter = require('./routes/index');
 var meusProdutosRouter = require('./routes/produtos');
 var comprasRouter = require('./routes/compra');
-var usuarioRouter = require('./routes/usuario')
+var usuarioRouter = require('./routes/users')
 
 var app = express();
 
@@ -40,38 +43,30 @@ app.use(session({
 
 ////
 
-
-
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/usuario', usuarioRouter);
 
 ////
 
 function auth(req, res, next) {
     console.log(req.session);
     
-    if(!req.session.user) {
+    if(!req.user) {
         var err = new Error ('Você não está autenticado!');
         err.status = 403;
         return next (err);
     } else {
-        if (req.session.user === 'Autenticado') {
-            next();
-        }
-        else {
-            var err = new Error ('Você não está autenticado');
-            err.status = 403;
-            return next(err);
-        }
+        next();
     }
 }
 
 
 app.use('/', indexRouter);
-app.use('/usuario', usuarioRouter);
 app.use('/meusProdutos', meusProdutosRouter);
 
 
 app.use(auth);
-
 app.use('/compras', comprasRouter);
 ////////////
 app.use(express.static(path.join(__dirname, 'public')));

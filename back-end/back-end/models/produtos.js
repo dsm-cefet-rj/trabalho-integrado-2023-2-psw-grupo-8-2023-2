@@ -34,7 +34,7 @@ const produtoSchema = new Schema({
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Usuario',
+        ref: 'User',
         required: false, //mudar quando tiver rota usuario
 
     },
@@ -44,7 +44,7 @@ produtoSchema.set('toJSON', {
     transform: (doc, ret) => {
       ret.id = ret._id;
       delete ret._id;
-      delete ret.__v; // Isso é opcional, para remover o campo de versão (__v) se estiver presente
+      delete ret.__v; 
     }
   });
 

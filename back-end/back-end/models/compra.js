@@ -25,7 +25,7 @@ compraSchema.set('toJSON', {
     transform: (doc, ret) => {
         ret.id = ret._id;
         delete ret._id;
-        delete ret.__v; // Isso é opcional, para remover o campo de versão (__v) se estiver presente
+        delete ret.__v; 
     }
 });
 
