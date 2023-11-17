@@ -9,7 +9,7 @@ var authenticate = require('../authenticate');
 
 
 router.route('/')
-    .get(authenticate.verifyUser,(req, res, next) => {
+    .get((req, res, next) => {
         Compras.find({})
             .then((comprasBanco) => {
                 res.statusCode = 200;
@@ -20,7 +20,7 @@ router.route('/')
 
     })
 
-    .post(authenticate.verifyUser, (req, res, next) => {
+    .post(authenticate.verifyUser , async (req, res, next) => {
         Compras.create(req.body)
             .then((compra) => {
                 console.log("Compra criada", compra);

@@ -35,7 +35,7 @@ router.route('/')
     
   })
 
-  .post(authenticate.verifyUser, (req, res, next) => {
+  .post(authenticate.verifyUser, async (req, res, next) => {
 
     Produtos.create(req.body)
     .then((produto) => {
@@ -49,7 +49,7 @@ router.route('/')
   });
 
 router.route('/:id')
-  .delete(authenticate.verifyUser, (req, res, next) => {
+  .delete(authenticate.verifyUser, async (req, res, next) => {
     Produtos.findByIdAndRemove(req.params.id)
       .then((resp) => {
         res.statusCode = 200;
@@ -59,7 +59,7 @@ router.route('/:id')
       .catch((err) => next(err));
   })
 
-  .put(authenticate.verifyUser, (req, res, next) => {
+  .put(authenticate.verifyUser, async (req, res, next) => {
 
     Produtos.findByIdAndUpdate(req.params.id, {
       $set: req.body
