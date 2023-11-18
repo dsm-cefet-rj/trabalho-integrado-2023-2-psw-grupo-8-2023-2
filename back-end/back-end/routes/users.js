@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
-
+const cors = require('cors');
+router.use(cors());
 const bodyParser = require('body-parser');
 var User = require('../models/users');
 var passport = require('passport');
 var authenticate = require('../authenticate');
 
 router.use(bodyParser.json());
+
 
 router.post('/signup', (req, res, next) => {
     User.register(new User({username: req.body.username, email: req.body.email, cpf: req.body.cpf}), req.body.password, 
@@ -30,7 +32,7 @@ router.post('/signup', (req, res, next) => {
     var token = authenticate.getToken({_id: req.user._id});
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
-    res.json({success: true, token: token, status: 'You are successfully logged in!'});
+    res.json({id: req.user._id, email: req.user.email, cpf: req.user.cpf, username: req.user.username ,token: token});
   });
   
   router.get('/logout', (req, res) => {

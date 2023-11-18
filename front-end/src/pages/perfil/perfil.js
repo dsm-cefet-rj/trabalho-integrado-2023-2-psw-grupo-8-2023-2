@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { string, object, number, setLocale } from 'yup';
+import { useSelector } from "react-redux";
+import { selectAllLogin} from "../../features/userSlice";
+
 
 const Schema = object(
     {
@@ -12,9 +15,7 @@ const Schema = object(
         password: string().required('Campo obrigatório').min(4, 'A senha precisa ter pelo menos 4 caracteres'),
         cpf: string().required('Campo obrigatório').matches(/^\d{3}-\d{3}-\d{3}-\d{2}$/,'O campo deve seguir o formato: 123-456-789-10')
     }
-);
-
-
+); 
 export const Perfil = () => {
     const { register, handleSubmit: onSubmit, formState: { errors } } = useForm({ resolver: yupResolver(Schema) });
     let msgN = '';
@@ -39,6 +40,12 @@ export const Perfil = () => {
     const handleSubmit = (data: any) => {
         console.log(data);
     }
+
+    
+    const user = useSelector(selectAllLogin);
+    console.log(user[0].cpf)
+
+
     return (
         <main>
             <div className="perfil">
@@ -48,7 +55,7 @@ export const Perfil = () => {
                         type="text"
                         id="username"
                         name="username"
-                        placeholder="Seu nome de usuário"
+                        placeholder={user[0].username}
                         required=""
                         {...register('nome')}
                     />
@@ -58,25 +65,18 @@ export const Perfil = () => {
                         type="text"
                         id="email"
                         name="email"
-                        placeholder="Seu endereço de email"
+                        placeholder={user[0].email}
                         required=""
                         {...register('email')}
                     />
                     <div className='erro'>{msgE}</div>
-                    <label htmlFor="data de nascimento">Data de nascimento:</label>
-                    <input
-                        type="text"
-                        id="data de nascimento"
-                        name="data de nascimento"
-                        placeholder="Sua data de nascimento"
-                        required=""
-                    />
+
                     <label htmlFor="cpf">CPF:</label>
                     <input
                         type="text"
                         id="cpf"
                         name="cpf"
-                        placeholder="123-456-789-10"
+                        placeholder={user[0].cpf}
                         required=""
                         {...register('cpf')}
                     />
