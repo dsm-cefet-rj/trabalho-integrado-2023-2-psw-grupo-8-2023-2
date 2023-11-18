@@ -17,12 +17,14 @@ export const productsFetch = createAsyncThunk(
 
 export const updateProduct = createAsyncThunk(
     "products/updateProduct",
-    async(produto) => {
+    async(produto,{getState}) => {
+        console.log(getState().logins.currentToken)
         let response = await fetch("http://localhost:3004/meusProdutos/" + produto.id,
         {
             method: 'PUT',
             headers: {
-                'Content-Type':'application/json;charset=utf-8'
+                'Content-Type':'application/json;charset=utf-8',
+                Authorization: 'Bearer ' + getState().logins.currentToken,
             },
             body: JSON.stringify(produto)
         });
@@ -36,12 +38,13 @@ export const updateProduct = createAsyncThunk(
 
 export const addNewProduct = createAsyncThunk(
     "products/addNewProduct",
-    async(produto) => {
+    async(produto,{getState}) => {
         let response = await fetch("http://localhost:3004/meusProdutos/",
         {
             method: 'POST',
             headers: {
-                'Content-Type':'application/json;charset=utf-8'
+                'Content-Type':'application/json;charset=utf-8',
+                Authorization: 'Bearer ' + getState().logins.currentToken,
             },
             body: JSON.stringify(produto)
         });
@@ -55,12 +58,13 @@ export const addNewProduct = createAsyncThunk(
 
 export const removeProduct = createAsyncThunk(
     "products/removeProduc",
-    async(produto) => {
+    async(produto,{getState}) => {
         let response = await fetch("http://localhost:3004/meusProdutos/" + produto.id,
         {
             method: 'DELETE',
             headers: {
-                'Content-Type':'application/json;charset=utf-8'
+                'Content-Type':'application/json;charset=utf-8',
+                Authorization: 'Bearer ' + getState().logins.currentToken,
             },
             body: JSON.stringify(produto)
         });

@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 import { useSelector } from "react-redux";
+import { selectAllLogin} from "../../features/userSlice";
+
 
 
 export const AdicionarVenda = () => {
@@ -31,8 +33,10 @@ export const AdicionarVenda = () => {
     dispatch(productsFetch());
   }, [items]);
 
+  const user = useSelector(selectAllLogin);
+
   const handleAddToStore = (nome, preço, tipo, tamanho, desc) => {
-    const newTenis = { "nome": nome, "tipo": tipo, "preço": preço, "tamanho": tamanho, "desc": desc, "img":"tenis5.jpg"}
+    const newTenis = { "nome": nome, "tipo": tipo, "preço": preço, "tamanho": tamanho, "desc": desc, "img":"tenis5.jpg", "userId":user[0].id}
     dispatch(addNewProduct(newTenis));
   };
   

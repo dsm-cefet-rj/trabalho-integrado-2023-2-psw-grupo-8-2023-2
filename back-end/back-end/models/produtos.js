@@ -35,7 +35,7 @@ const produtoSchema = new Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: false, //mudar quando tiver rota usuario
+        required: true, //mudar quando tiver rota usuario
 
     },
 })

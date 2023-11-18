@@ -44,6 +44,7 @@ export const Perfil = () => {
     
     const user = useSelector(selectAllLogin);
     console.log(user[0].cpf)
+    console.log(user[0].id)
 
 
     return (

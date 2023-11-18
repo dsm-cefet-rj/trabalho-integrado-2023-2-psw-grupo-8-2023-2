@@ -9,10 +9,11 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { clearCart, decreaseCart, getTotal, increaseCart, removeFromCart, addNovaCompra } from '../../features/cartSlice';
 import { useEffect } from 'react';
-
+import { selectAllLogin} from "../../features/userSlice";
 
 
 export const Carrinho = () => {
+    const user = useSelector(selectAllLogin);
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
@@ -36,20 +37,37 @@ export const Carrinho = () => {
         dispatch(clearCart())
     }
 
+    
+
     const handleAddNovaCompra = () => {
         let itemsComprados = []
         cart.cartItems.map((item) => {
             let novoItem = {productId: item.id, quantidade: item.cartQuantity, preço: item.preço}
             itemsComprados.push(novoItem);
         })
+        /* 
+        items: [
+            {
+              productId: 'ID_DO_PRODUTO', // Substitua pelo ID real do produto
+              quantidade: 3,
+              preço: 29.99,
+            },
+            // Adicione mais itens, se necessário
+          ],
+          total: 89.97,
+          */
+        
        
         const novaCompra = {
+            userId: user[0].id,
             items: itemsComprados,
             total: cart.cartTotalAmount,
         };
         console.log(novaCompra)
         dispatch(addNovaCompra(novaCompra));
       };
+
+      const status = useSelector(state => state.logins.status);
 
 
     return (
@@ -120,7 +138,9 @@ export const Carrinho = () => {
                                         <span className='quantidade'>R$:{cart.cartTotalAmount}</span>
                                     </div>
                                     <Link to="/"><Button style={{marginRight:"10px"}} variant='dark'>CONTINUAR COMPRANDO</Button></Link>
-                                    <Link to="/FinalizarCompra"><Button onClick={() => handleAddNovaCompra()}variant="dark">FINALIZAR COMPRA</Button></Link>
+
+                                    {status === 'logged_in' ? (<Link to="/FinalizarCompra"><Button onClick={() => handleAddNovaCompra()}variant="dark">FINALIZAR COMPRA</Button></Link>) : (<Link to ="/Login"><Button variant ="dark"> FAZER LOGIN</Button></Link>)}
+                                    
                                 </div>
                             </div>
 

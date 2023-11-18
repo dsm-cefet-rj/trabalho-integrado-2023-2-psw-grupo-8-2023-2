@@ -9,7 +9,7 @@ import "./header.css"
 import { useState } from "react";
 import { PRODUCTS } from "../data";
 import { useSelector } from "react-redux";
-
+import { selectAllLogin} from "../features/userSlice";
 
 export const Header = () => {
     return (
@@ -40,13 +40,18 @@ const HeaderRightSection = () => {
     totalAmount = totalAmount + cartItem.cartQuantity
     );
     
+    const status = useSelector(state => state.logins.status);
+    const user = useSelector(selectAllLogin);
+
     return (
         <Container fluid="true">
             <Row xs="auto">
                 <Col className="login">
                     <div className="loginText">
-                        <p>Faça <Link to='/Login'>LOGIN</Link> ou <br /> crie seu <Link to='/Cadastro'>CADASTRO</Link></p>
-                        <Link to='/Perfil'> <img src={loginIcon} id="loginImg" alt="UserIcon"></img> </Link>
+
+                    {status === 'logged_in' ? (<Link to='/Perfil'><p>Bem Vindo<br></br>{user[0].username}</p></Link>) : (<p>Faça <Link to='/Login'>LOGIN</Link> ou <br /> crie seu <Link to='/Cadastro'>CADASTRO</Link></p>)}
+                        {status === 'logged_in' ? (<Link to='/Perfil'> <img src={loginIcon} id="loginImg" alt="UserIcon"></img> </Link>) : (<Link to='/Login'> <img src={loginIcon} id="loginImg" alt="UserIcon"></img> </Link>)}
+
                     </div>
                 </Col>
                 <Col >

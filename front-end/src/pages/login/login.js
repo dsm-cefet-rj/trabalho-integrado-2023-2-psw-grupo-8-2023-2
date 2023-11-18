@@ -52,7 +52,6 @@ export const Login = () => {
         //navigate('/Perfil')
     };
 
-
     const status = useSelector(state => state.logins.status);
 
 

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
-
+import {httpDelete, httpGet, httpPut, httpPost} from '../utils'
 
 const initialState = {
     cartItems: [],
@@ -7,13 +7,19 @@ const initialState = {
     cartTotalAmount: 0,
 };
 
+
+export const addNovaCompra = createAsyncThunk('compras/addNovaCompra', async (compraData, {getState}) => {
+    return await httpPost(`http://localhost:3004/compras/`, compraData, {headers: {Authorization: 'Bearer ' + getState().logins.currentToken}});
+});
+/* 
 export const addNovaCompra = createAsyncThunk(
     'compras/addNovaCompra',
-    async (compraData) => {
+    async (compraData,{getState}) => {
       const response = await fetch('http://localhost:3004/compras/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + getState().logins.currentToken,
         },
         body: JSON.stringify(compraData),
       });
@@ -26,6 +32,7 @@ export const addNovaCompra = createAsyncThunk(
       }
     }
   );
+  */
 
 
 

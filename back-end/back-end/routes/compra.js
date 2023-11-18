@@ -20,7 +20,35 @@ router.route('/')
 
     })
 
-    .post(authenticate.verifyUser , async (req, res, next) => {
+    .post(authenticate.verifyUser, (req, res, next) => {
+        Compras.create(req.body)
+        .then((compra) => {
+            console.log('Compra criada ', compra);
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(compra);
+        }, (err) => next(err))
+        .catch((err) => next(err));
+      })
+
+
+    /* 
+    .post(authenticate.verifyUser, async (req, res, next) => {
+        try {
+            const compra = await Compras.create(req.body);
+            console.log("Compra criada", compra);
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(compra);
+        } catch (err) {
+            next(err);
+        }
+    });
+
+    */
+
+    /* 
+    .post(authenticate.verifyUser, (req, res, next) => {
         Compras.create(req.body)
             .then((compra) => {
                 console.log("Compra criada", compra);
@@ -31,6 +59,7 @@ router.route('/')
             .catch((err) => next(err));
 
     });
+    */
 
 
 module.exports = router;

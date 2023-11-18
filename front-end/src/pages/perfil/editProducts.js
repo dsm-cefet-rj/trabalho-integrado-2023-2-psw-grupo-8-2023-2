@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { removeFromStore, updateProduct, productsFetch, removeProduct} from "../../features/productsSlice";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { selectAllLogin} from "../../features/userSlice";
 
 export const EditProducts = () => {
 
@@ -20,10 +21,12 @@ export const EditProducts = () => {
     };
 
 
+    /* 
     useEffect(() => {
         dispatch(productsFetch());
     },[items]);
 
+    */
     const handleChangeProductNome = (novaPropriedade,id,propriedade) => {
         const index = items.findIndex((item) => item.id === id)
         const tipo = items[index]['tipo'];
@@ -71,7 +74,7 @@ export const EditProducts = () => {
 
 
     
-
+    const user = useSelector(selectAllLogin);
 
 
 
@@ -79,7 +82,7 @@ export const EditProducts = () => {
         <>
             <h1>MEUS PRODUTOS</h1>
             <div className="products">
-                {items.map((product, key) =>
+                {items.filter(product => product.userId === user[0].id).map((product, key) =>
                     <div>
                         <Row className="MyProduct" key={product.id}>
                             <Col className="cart-product">
