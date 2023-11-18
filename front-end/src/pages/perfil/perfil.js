@@ -1,12 +1,13 @@
 import React from "react";
 import "./perfil.css"
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { string, object, number, setLocale } from 'yup';
 import { useSelector } from "react-redux";
 import { selectAllLogin} from "../../features/userSlice";
-
+import { useNavigate } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const Schema = object(
     {
@@ -43,66 +44,75 @@ export const Perfil = () => {
 
     
     const user = useSelector(selectAllLogin);
-    console.log(user[0].cpf)
-    console.log(user[0].id)
 
 
-    return (
-        <main>
-            <div className="perfil">
-                <form id="profile-form" onSubmit={onSubmit(handleSubmit)}>
-                    <label htmlFor="username">Nome de Usuário:</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        placeholder={user[0].username}
-                        required=""
-                        {...register('nome')}
-                    />
-                    <div className='erro'>{msgN}</div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        placeholder={user[0].email}
-                        required=""
-                        {...register('email')}
-                    />
-                    <div className='erro'>{msgE}</div>
+    const status = useSelector(state => state.logins.status);
 
-                    <label htmlFor="cpf">CPF:</label>
-                    <input
-                        type="text"
-                        id="cpf"
-                        name="cpf"
-                        placeholder={user[0].cpf}
-                        required=""
-                        {...register('cpf')}
-                    />
-                    <div className='erro'>{msgC}</div>
-                    <label htmlFor="password">Senha:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="*******"
-                        required=""
-                        {...register('password')}
-                    />
-                    <div className='erro'>{msgP}</div>
-                    <button type="submit">Atualizar Dados</button>
-                </form>
-                <div className="produtos">
-                    <a href="adicionarVenda.html">
-                        <Link to="/AdicionarVenda"><button>Adicionar produtos a venda</button></Link>
-                    </a>
-                    <a href="#">
-                        <Link to="/MeusProdutos"><button>Ver meus produtos</button></Link>
-                    </a>
+    const navigate = useNavigate();
+
+
+    if (status !== "logged_in") {
+        return <Navigate to="/Login" />;
+      }else {
+        return (
+            <main>
+                <div className="perfil">
+                    <form id="profile-form" onSubmit={onSubmit(handleSubmit)}>
+                        <label htmlFor="username">Nome de Usuário:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder={user[0].username}
+                            required=""
+                            {...register('nome')}
+                        />
+                        <div className='erro'>{msgN}</div>
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            type="text"
+                            id="email"
+                            name="email"
+                            placeholder={user[0].email}
+                            required=""
+                            {...register('email')}
+                        />
+                        <div className='erro'>{msgE}</div>
+    
+                        <label htmlFor="cpf">CPF:</label>
+                        <input
+                            type="text"
+                            id="cpf"
+                            name="cpf"
+                            placeholder={user ? user[0].cpf : 'Usuario nao carregado'}
+                            required=""
+                            {...register('cpf')}
+                        />
+                        <div className='erro'>{msgC}</div>
+                        <label htmlFor="password">Senha:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="*******"
+                            required=""
+                            {...register('password')}
+                        />
+                        <div className='erro'>{msgP}</div>
+                        <button type="submit">Atualizar Dados</button>
+                    </form>
+                    <div className="produtos">
+                        <a href="adicionarVenda.html">
+                            <Link to="/AdicionarVenda"><button>Adicionar produtos a venda</button></Link>
+                        </a>
+                        <a href="#">
+                            <Link to="/MeusProdutos"><button>Ver meus produtos</button></Link>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </main>
-    )
+            </main>
+        )
+      }
+
+    
 }

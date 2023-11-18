@@ -6,9 +6,9 @@ import Image from 'react-bootstrap/Image';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeFromStore, updateProduct, productsFetch, removeProduct} from "../../features/productsSlice";
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { selectAllLogin} from "../../features/userSlice";
+import { useNavigate, Navigate } from 'react-router-dom';
 
 export const EditProducts = () => {
 
@@ -21,12 +21,14 @@ export const EditProducts = () => {
     };
 
 
-    /* 
+    
     useEffect(() => {
         dispatch(productsFetch());
     },[items]);
+    
 
-    */
+    const user = useSelector(selectAllLogin);
+
     const handleChangeProductNome = (novaPropriedade,id,propriedade) => {
         const index = items.findIndex((item) => item.id === id)
         const tipo = items[index]['tipo'];
@@ -36,7 +38,7 @@ export const EditProducts = () => {
             const img = items[index]['img'];
             const desc = items[index]['desc'];
             const tamanho = items[index]['tamanho'];
-            dispatch(updateProduct({"id":id,"nome":novaPropriedade,'tipo':tipo,'preço':preço,'img':img,'desc':desc,'tamanho':tamanho}));
+            dispatch(updateProduct({"id":id,"nome":novaPropriedade,'tipo':tipo,'preço':preço,'img':img,'desc':desc,'tamanho':tamanho, 'userId':user[0].id}));
         }
 
         if(prop==="desc"){
@@ -44,14 +46,14 @@ export const EditProducts = () => {
             const img = items[index]['img'];
             const nome = items[index]['nome'];
             const tamanho = items[index]['tamanho'];
-            dispatch(updateProduct({"id":id,"nome":nome,'tipo':tipo,'preço':preço,'img':img,'desc':novaPropriedade,'tamanho':tamanho}));
+            dispatch(updateProduct({"id":id,"nome":nome,'tipo':tipo,'preço':preço,'img':img,'desc':novaPropriedade,'tamanho':tamanho,'userId':user[0].id}));
         }
         if(prop==="preço"){
             const nome = items[index]['nome'];
             const img = items[index]['img'];
             const desc = items[index]['desc'];
             const tamanho = items[index]['tamanho'];
-            dispatch(updateProduct({"id":id,"nome":nome,'tipo':tipo,'preço':novaPropriedade,'img':img,'desc':desc,'tamanho':tamanho}));
+            dispatch(updateProduct({"id":id,"nome":nome,'tipo':tipo,'preço':novaPropriedade,'img':img,'desc':desc,'tamanho':tamanho, 'userId':user[0].id}));
         }
     };
 
@@ -73,51 +75,54 @@ export const EditProducts = () => {
 
 
 
+    const status1 = useSelector(state => state.logins.status);
+
+    const navigate = useNavigate();
+
+    if (status1 !== "logged_in") {
+        return <Navigate to="/Login" />;
+    } else {
+        return (
+            <>
+                <h1>MEUS PRODUTOS</h1>
+                <div className="products">
+                    {items.filter(product => product.userId === user[0].id).map((product, key) =>
+                        <div>
+                            <Row className="MyProduct" key={product.id}>
+                                <Col className="cart-product">
+                                    <Image src={require(`../../images/${product.img}`)} id='cart-product-image' fluid />
+                                    <div className='nome-remove'>
+                                        <Container>
+                                        <input onChange={handleChangeNome} type='text' placeholder={product.nome}></input>
+                                        <Container>
+                                        <button onClick={() => handleChangeProductNome(newNome,product.id,"nome")} >Editar Nome</button>
+                                        </Container>
+                                        </Container>
+                                        <Container>
+                                        <textarea onChange={handleChangeDesc} class="wideInput" id="descrição" >{product.desc}</textarea>
+                                        </Container>
+                                        <Container>
+                                        <button onClick={() => handleChangeProductNome(newDesc,product.id,"desc")} >Editar descrição</button>
+                                        </Container>
     
-    const user = useSelector(selectAllLogin);
-
-
-
-    return (
-        <>
-            <h1>MEUS PRODUTOS</h1>
-            <div className="products">
-                {items.filter(product => product.userId === user[0].id).map((product, key) =>
-                    <div>
-                        <Row className="MyProduct" key={product.id}>
-                            <Col className="cart-product">
-                                <Image src={require(`../../images/${product.img}`)} id='cart-product-image' fluid />
-                                <div className='nome-remove'>
-                                    <Container>
-                                    <input onChange={handleChangeNome} type='text' placeholder={product.nome}></input>
-                                    <Container>
-                                    <button onClick={() => handleChangeProductNome(newNome,product.id,"nome")} >Editar Nome</button>
-                                    </Container>
-                                    </Container>
-                                    <Container>
-                                    <textarea onChange={handleChangeDesc} class="wideInput" id="descrição" >{product.desc}</textarea>
-                                    </Container>
-                                    <Container>
-                                    <button onClick={() => handleChangeProductNome(newDesc,product.id,"desc")} >Editar descrição</button>
-                                    </Container>
-
-                                    <Container>
-                                    <button onClick={() => handleRemoveFromStore(product.id)} id='remover' >
-                                        Remover
-                                    </button>
-                                    </Container>
-                                </div>
-                            </Col>
-
-                            <Col className="cart-product-price" >
-                                <input onChange={handleChangePreço} type='text' placeholder={product.preço}></input>
-                                <button onClick={() => handleChangeProductNome(newPreço,product.id,"preço")}>Editar Preço</button>
-                            </Col>
-
-
-                        </Row>
-                    </div>)}
-            </div>
-        </>
-    )
+                                        <Container>
+                                        <button onClick={() => handleRemoveFromStore(product.id)} id='remover' >
+                                            Remover
+                                        </button>
+                                        </Container>
+                                    </div>
+                                </Col>
+    
+                                <Col className="cart-product-price" >
+                                    <input onChange={handleChangePreço} type='text' placeholder={product.preço}></input>
+                                    <button onClick={() => handleChangeProductNome(newPreço,product.id,"preço")}>Editar Preço</button>
+                                </Col>
+    
+    
+                            </Row>
+                        </div>)}
+                </div>
+            </>
+        )
+    }
 }
