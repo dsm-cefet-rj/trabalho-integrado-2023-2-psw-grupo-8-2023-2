@@ -18,25 +18,25 @@ export const  Cadastro = () => {
                             />
                         </div>
                         <div className="col-md-6">
-                            <input type="email" className="form-control" placeholder="CPF*" />
+                            <input type="text" className="form-control" placeholder="CPF*" />
                         </div>
                         <div className="col-md-6">
                             <input
-                                type="email"
+                                type="text"
                                 className="form-control"
                                 placeholder="Data de Nascimento*"
                             />
                         </div>
                         <div className="col-md-6">
                             <input
-                                type="email"
+                                type="text"
                                 className="form-control"
-                                placeholder="Teelfone Celular*"
+                                placeholder="Telefone Celular*"
                             />
                         </div>
                         <div className="col-12">
                             <input
-                                type="text"
+                                type="email"
                                 className="form-control"
                                 placeholder="Endereco de E-mail*"
                             />
