@@ -14,55 +14,55 @@ export const  Cadastro = () => {
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Nome Completo*"
+                                placeholder="Nome Completo*" required
                             />
                         </div>
                         <div className="col-md-6">
-                            <input type="text" className="form-control" placeholder="CPF*" />
+                            <input type="text" className="form-control" placeholder="CPF*" required/>
                         </div>
                         <div className="col-md-6">
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Data de Nascimento*"
+                                placeholder="Data de Nascimento*" required
                             />
                         </div>
                         <div className="col-md-6">
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Telefone Celular*"
+                                placeholder="Telefone Celular*" required
                             />
                         </div>
                         <div className="col-12">
                             <input
                                 type="email"
                                 className="form-control"
-                                placeholder="Endereco de E-mail*"
+                                placeholder="Endereco de E-mail*" required
                             />
                         </div>
                         <div className="col-md-6">
                             <input
                                 type="password"
                                 className="form-control"
-                                placeholder="Crie sua senha*"
+                                placeholder="Crie sua senha*" required
                             />
                         </div>
                         <div className="col-md-6">
                             <input
                                 type="password"
                                 className="form-control"
-                                placeholder="Confirme sua senha*"
+                                placeholder="Confirme sua senha*" required
                             />
                         </div>
-                        <p id="field">(*) Campos Obrigatorios</p>
+                        <p id="field">(*) Campos Obrigatórios</p>
                         <hr />
                         <div id="botao">
                             <button type="submit" id="out">
                                 CADASTRAR-SE
                             </button>
                             <p>
-                                Ja e cadastrado?{" "}
+                                Já é cadastrado?{" "}
                                 <Link to="/Login" id="ent">
                                     ENTRAR
                                 </Link>
