@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk, createEntityAdapter} from '@reduxjs/toolkit'
-import {httpPost} from '../utils'
+import {httpPost, httpPut} from '../utils'
 
 const loginAdapter = createEntityAdapter();
 
@@ -15,8 +15,12 @@ export const loginServer = createAsyncThunk('/users/loginserver', async (login) 
     return await httpPost(`http://localhost:3004/usuario/login`, login);
 });
 
-export const addUserServer = createAsyncThunk('projetos/addProjetoServer', async (cadastro) => {
+export const addUserServer = createAsyncThunk('user/addUserServer', async (cadastro) => {
     return await httpPost(`http://localhost:3004/usuario/signup`, cadastro);
+});
+
+export const updateUserServer = createAsyncThunk('user/updateUserServer', async (user, {getState}) => {
+    return await httpPut(`http://localhost:3004/usuario/update`, user, {headers: {Authorization: 'Bearer ' + getState().logins.currentToken}});
 });
 
 
@@ -27,6 +31,7 @@ export const loginSlice = createSlice({
     extraReducers: {
        [loginServer.pending]: (state, action) => {state.status = 'trying_login'},
        [loginServer.fulfilled]: (state, action) => {state.status = 'logged_in'; loginAdapter.addOne(state, action.payload); state.currentToken = action.payload.token },
+       [updateUserServer.fulfilled]: (state, action) => {state.status = 'logged_in';loginAdapter.upsertOne(state, action.payload);},
     },
 })
 

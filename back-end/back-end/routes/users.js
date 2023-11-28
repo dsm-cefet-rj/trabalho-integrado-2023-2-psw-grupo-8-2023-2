@@ -48,6 +48,26 @@ router.post('/signup', (req, res, next) => {
     }
   });
 
+  router.route('/update')
+  .put(authenticate.verifyUser, async (req, res, next) => {
+    try {
+      // Atualize os campos do perfil conforme necessário
+      req.user.username = req.body.username;
+      // Adicione mais campos conforme necessário
+  
+      // Salve as alterações no banco de dados
+      await req.user.save();
+  
+      res.status(200).json({ message: 'Perfil atualizado com sucesso!' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Erro ao atualizar o perfil.' });
+    }
+
+  });
+
+  
+
   
 module.exports = router;
 

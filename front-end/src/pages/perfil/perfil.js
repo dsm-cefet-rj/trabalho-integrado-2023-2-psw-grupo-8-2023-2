@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import "./perfil.css"
 import { Link, Navigate } from "react-router-dom";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -7,8 +7,11 @@ import { string, object, number, setLocale } from 'yup';
 import { useSelector } from "react-redux";
 import { selectAllLogin} from "../../features/userSlice";
 import { useNavigate } from 'react-router-dom';
+import { updateUserServer, loginServer } from "../../features/userSlice";
 import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
+/* 
 const Schema = object(
     {
         nome: string().required('Campo obrigatório'),
@@ -17,7 +20,9 @@ const Schema = object(
         cpf: string().required('Campo obrigatório').matches(/^\d{3}-\d{3}-\d{3}-\d{2}$/,'O campo deve seguir o formato: 123-456-789-10')
     }
 ); 
+*/
 export const Perfil = () => {
+    /* 
     const { register, handleSubmit: onSubmit, formState: { errors } } = useForm({ resolver: yupResolver(Schema) });
     let msgN = '';
     let msgE = '';
@@ -25,6 +30,8 @@ export const Perfil = () => {
     let msgC = '';
     console.log(msgE)
     console.log(msgP)
+    
+
     
     if (errors && errors.nome && errors.cpf.message) {
         msgN = errors.nome.message
@@ -41,13 +48,24 @@ export const Perfil = () => {
     const handleSubmit = (data: any) => {
         console.log(data);
     }
+    */
 
     
     const user = useSelector(selectAllLogin);
 
+    const [newUsername, setNewUsername] = useState("");
+    const handleUsername = (event) => {
+        setNewUsername(event.target.value);
+        console.log(newUsername)
+    };
+
+    const handleUpdate = (username) => {
+        dispatch(updateUserServer({"username":username, "id":user[0].id }));
+    };
+
 
     const status = useSelector(state => state.logins.status);
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
 
@@ -57,27 +75,22 @@ export const Perfil = () => {
         return (
             <main>
                 <div className="perfil">
-                    <form id="profile-form" onSubmit={onSubmit(handleSubmit)}>
+                    <form id="profile-form" >
                         <label htmlFor="username">Nome de Usuário:</label>
                         <input
+                            onChange={handleUsername}
                             type="text"
                             id="username"
                             name="username"
                             placeholder={user[0].username}
-                            required=""
-                            {...register('nome')}
                         />
-                        <div className='erro'>{msgN}</div>
                         <label htmlFor="email">Email:</label>
                         <input
                             type="text"
                             id="email"
                             name="email"
                             placeholder={user[0].email}
-                            required=""
-                            {...register('email')}
                         />
-                        <div className='erro'>{msgE}</div>
     
                         <label htmlFor="cpf">CPF:</label>
                         <input
@@ -86,9 +99,8 @@ export const Perfil = () => {
                             name="cpf"
                             placeholder={user ? user[0].cpf : 'Usuario nao carregado'}
                             required=""
-                            {...register('cpf')}
                         />
-                        <div className='erro'>{msgC}</div>
+            
                         <label htmlFor="password">Senha:</label>
                         <input
                             type="password"
@@ -96,10 +108,9 @@ export const Perfil = () => {
                             name="password"
                             placeholder="*******"
                             required=""
-                            {...register('password')}
                         />
-                        <div className='erro'>{msgP}</div>
-                        <button type="submit">Atualizar Dados</button>
+             
+                        <button onClick={() => handleUpdate(newUsername)} type="submit">Atualizar Dados</button>
                     </form>
                     <div className="produtos">
                         <a href="adicionarVenda.html">
