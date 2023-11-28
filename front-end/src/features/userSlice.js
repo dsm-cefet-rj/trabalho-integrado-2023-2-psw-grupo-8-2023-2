@@ -15,6 +15,12 @@ export const loginServer = createAsyncThunk('/users/loginserver', async (login) 
     return await httpPost(`http://localhost:3004/usuario/login`, login);
 });
 
+export const addUserServer = createAsyncThunk('projetos/addProjetoServer', async (cadastro) => {
+    return await httpPost(`http://localhost:3004/usuario/signup`, cadastro);
+});
+
+
+
 export const loginSlice = createSlice({
     name: 'logins',
     initialState: initialState,
@@ -23,7 +29,6 @@ export const loginSlice = createSlice({
        [loginServer.fulfilled]: (state, action) => {state.status = 'logged_in'; loginAdapter.addOne(state, action.payload); state.currentToken = action.payload.token },
     },
 })
-
 
 
 export const {
