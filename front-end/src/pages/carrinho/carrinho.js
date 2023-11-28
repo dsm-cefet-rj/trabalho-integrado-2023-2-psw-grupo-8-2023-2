@@ -139,7 +139,7 @@ export const Carrinho = () => {
                                     </div>
                                     <Link to="/"><Button style={{marginRight:"10px"}} variant='dark'>CONTINUAR COMPRANDO</Button></Link>
 
-                                    {status === 'logged_in' ? (<Link to="/FinalizarCompra"><Button onClick={() => handleAddNovaCompra()}variant="dark">FINALIZAR COMPRA</Button></Link>) : (<Link to ="/Login"><Button variant ="dark"> FAZER LOGIN</Button></Link>)}
+                                    {status === 'logged_in' ? (<Link to="/compraFinalizada"><Button onClick={() => handleAddNovaCompra()}variant="dark">FINALIZAR COMPRA</Button></Link>) : (<Link to ="/Login"><Button variant ="dark"> FAZER LOGIN</Button></Link>)}
                                     
                                 </div>
                             </div>
