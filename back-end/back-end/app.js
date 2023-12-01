@@ -13,7 +13,7 @@ var indexRouter = require('./routes/index');
 var meusProdutosRouter = require('./routes/produtos');
 var comprasRouter = require('./routes/compra');
 var usuarioRouter = require('./routes/users')
-
+var uploadRouter = require('./routes/imageUpload');
 
 
 const mongoose = require('mongoose');
@@ -49,7 +49,7 @@ app.use('/', indexRouter);
 app.use('/meusProdutos', meusProdutosRouter);
 
 
-
+app.use('/imageUpload', uploadRouter);
 app.use('/compras', comprasRouter);
 ////////////
 
