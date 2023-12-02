@@ -13,8 +13,15 @@ export const Main = () => {
     const dispatch = useDispatch();
     
     useEffect(() => {
+        // Dispatch da ação quando o componente é montado
         dispatch(productsFetch());
-      }, [items]);
+    
+        // O retorno da função de useEffect é chamado quando o componente é desmontado
+        return () => {
+          // Qualquer limpeza que precisa ser feita quando o componente é desmontado
+        };
+      }, []); 
+
 
     return (
         <>

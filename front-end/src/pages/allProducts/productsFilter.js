@@ -1,9 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { productsFetch } from "../../features/productsSlice";
 
 export const ProductsFilter = (props) => {
     const { id, nome, preço, img, tipo, tamanho } = props.data
+
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        // Dispatch da ação quando o componente é montado
+        dispatch(productsFetch());
+    
+        // O retorno da função de useEffect é chamado quando o componente é desmontado
+        return () => {
+          // Qualquer limpeza que precisa ser feita quando o componente é desmontado
+        };
+      }, []); 
 
     
     if (tipo === props.tipo) {

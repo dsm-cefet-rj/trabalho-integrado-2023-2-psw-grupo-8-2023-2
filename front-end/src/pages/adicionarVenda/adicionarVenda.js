@@ -29,9 +29,6 @@ export const AdicionarVenda = () => {
 
   const [newPreço, setNewPreço] = useState(0);
 
-  useEffect(() => {
-    dispatch(productsFetch());
-  }, [items]);
 
   const user = useSelector(selectAllLogin);
 
@@ -126,7 +123,7 @@ export const AdicionarVenda = () => {
                 <option value="feminino">Feminino</option>
                 {/* Adicione mais opções conforme necessário */}
               </select>
-              <Link to="/Perfil" > <button onClick={() => handleAddToStore(newNome, newPreço, newTipo, newTamanho, newDesc)} >Adicionar Tênis</button> </Link>
+              <Link to="/MeusProdutos" > <button onClick={() => handleAddToStore(newNome, newPreço, newTipo, newTamanho, newDesc)} >Adicionar Tênis</button> </Link>
             </form>
           </div>
         </main>

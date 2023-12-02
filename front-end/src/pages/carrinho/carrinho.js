@@ -65,6 +65,7 @@ export const Carrinho = () => {
         };
         console.log(novaCompra)
         dispatch(addNovaCompra(novaCompra));
+        dispatch(clearCart())
       };
 
       const status = useSelector(state => state.logins.status);
