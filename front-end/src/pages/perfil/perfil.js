@@ -94,9 +94,14 @@ export const Perfil = () => {
         setEmail(e.target.value);
     };
 
+    
+
     const handleExcluirConta = () => {
-        console.log("Tá chegando aqui?")
-        dispatch(deleteUserServer());
+        const superId = user[0].id
+        console.log(superId)
+        dispatch(deleteUserServer({"id": superId}));
+        navigate('/')
+
     }
 
 
@@ -109,8 +114,6 @@ export const Perfil = () => {
             <main>
                 <div className="perfil">
                     <form id="profile-form" >
-
-
                         <div>
                             <p>Nome de usuário: {username}</p>
                             {editingUsername ? (

@@ -23,22 +23,12 @@ export const updateUserServer = createAsyncThunk('user/updateUserServer', async 
     return await httpPut(`http://localhost:3004/usuario/update`, user, {headers: {Authorization: 'Bearer ' + getState().logins.currentToken}});
 });
 
-export const deleteUserServer = createAsyncThunk(
-    "user/deleteUserServer",
-    async({getState}) => {
-        let response = await fetch("http://localhost:3004/usuario/deleteUser" ,
-        {
-            method: 'DELETE',
-            headers: {
-                'Content-Type':'application/json;charset=utf-8',
-                Authorization: 'Bearer ' + getState().logins.currentToken,
-            },
-        });
-        if(!response.ok) {
-            return new Error ("Usuario Removido")
-        }
-    }
-)
+
+export const deleteUserServer = createAsyncThunk('user/deleteUserServer', async (user,{getState}) => {
+    return await httpDelete(`http://localhost:3004/usuario/deleteUser`, user, {headers: {Authorization: 'Bearer ' + getState().logins.currentToken}});
+});
+
+
 
 
 
@@ -49,6 +39,8 @@ export const loginSlice = createSlice({
        [loginServer.pending]: (state, action) => {state.status = 'trying_login'},
        [loginServer.fulfilled]: (state, action) => {state.status = 'logged_in'; loginAdapter.addOne(state, action.payload); state.currentToken = action.payload.token },
        [updateUserServer.fulfilled]: (state, action) => {state.status = 'logged_in';loginAdapter.upsertOne(state, action.payload);},
+       [deleteUserServer.fulfilled]: (state, action) => {state.status = 'not_loaded'; loginAdapter.removeAll(state, action.payload); state.currentToken = null}
+       
     },
 })
 

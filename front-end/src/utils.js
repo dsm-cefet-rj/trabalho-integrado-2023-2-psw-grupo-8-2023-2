@@ -39,6 +39,6 @@ export const httpPut = async function (endpoint, body, customConfig = {}) {
   return client(endpoint, {body, ...customConfig, method: 'PUT'})
 }
 
-export const httpDelete = async function (endpoint, customConfig = {}) {
-  return client(endpoint, { ...customConfig, method: 'DELETE' })
+export const httpDelete = async function (endpoint,body, customConfig = {}) {
+  return client(endpoint, {body, ...customConfig, method: 'DELETE' })
 }

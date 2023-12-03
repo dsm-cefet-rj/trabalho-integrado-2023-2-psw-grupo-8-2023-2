@@ -52,8 +52,8 @@ router.route('/update')
   .put(authenticate.verifyUser, async (req, res, next) => {
     try {
       // Atualize os campos do perfil conforme necessário
-      if (req.body.nome) {
-        eq.user.username = req.body.username;
+      if (req.body.username) {
+        req.user.username = req.body.username;
       }
 
       if (req.body.email) {
@@ -72,13 +72,14 @@ router.route('/update')
 
   });
 
-router.route('/deleteUser')
+
+  router.route('/deleteUser')
   .delete(authenticate.verifyUser, async (req, res, next) => {
     try {
-      // Remove o usuário do banco de dados
-      await req.user.remove();
+      // Remove o usuário do banco de dados pelo ID
+      await User.findByIdAndRemove(req.body.id);
 
-      // Desloga o usuário após a exclusão (opcional)
+      // Desloga o usuário após a exclusão
 
       res.status(200).json({ message: 'Conta excluída com sucesso!' });
     } catch (error) {
@@ -86,9 +87,6 @@ router.route('/deleteUser')
       res.status(500).json({ error: 'Erro ao excluir a conta.' });
     }
   });
-
-
-
 
 
 
