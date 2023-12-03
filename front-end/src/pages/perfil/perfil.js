@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { updateUserServer, loginServer, deleteUserServer } from "../../features/userSlice";
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { removeFromStore, updateProduct, productsFetch, removeProduct} from "../../features/productsSlice";
 
 /* 
 const Schema = object(
@@ -99,10 +100,17 @@ export const Perfil = () => {
     const handleExcluirConta = () => {
         const superId = user[0].id
         console.log(superId)
+        if(status1 !== null) {
+            items.filter(product => product.userId === user[0].id).map((product, key) => {
+                dispatch(removeProduct({"id":product.id}));
+            })
+        }
         dispatch(deleteUserServer({"id": superId}));
         navigate('/')
 
     }
+
+    const { items, status1 } = useSelector((state) => state.products);
 
 
 
@@ -166,7 +174,9 @@ export const Perfil = () => {
                             placeholder="*******"
                             required=""
                         />
+
                         <button onClick={handleExcluirConta}>Excluir minha conta</button>
+
                     </form>
                     <div className="produtos">
                         <a href="adicionarVenda.html">
