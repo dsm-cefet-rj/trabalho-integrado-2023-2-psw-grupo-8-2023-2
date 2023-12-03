@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk, createEntityAdapter} from '@reduxjs/toolkit'
-import {httpPost, httpPut} from '../utils'
+import {httpPost, httpPut, httpDelete} from '../utils'
 
 const loginAdapter = createEntityAdapter();
 
@@ -22,6 +22,23 @@ export const addUserServer = createAsyncThunk('user/addUserServer', async (cadas
 export const updateUserServer = createAsyncThunk('user/updateUserServer', async (user, {getState}) => {
     return await httpPut(`http://localhost:3004/usuario/update`, user, {headers: {Authorization: 'Bearer ' + getState().logins.currentToken}});
 });
+
+export const deleteUserServer = createAsyncThunk(
+    "user/deleteUserServer",
+    async({getState}) => {
+        let response = await fetch("http://localhost:3004/usuario/deleteUser" ,
+        {
+            method: 'DELETE',
+            headers: {
+                'Content-Type':'application/json;charset=utf-8',
+                Authorization: 'Bearer ' + getState().logins.currentToken,
+            },
+        });
+        if(!response.ok) {
+            return new Error ("Usuario Removido")
+        }
+    }
+)
 
 
 

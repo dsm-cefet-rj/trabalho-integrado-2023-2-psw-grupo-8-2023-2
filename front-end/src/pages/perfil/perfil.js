@@ -5,9 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { string, object, number, setLocale } from 'yup';
 import { useSelector } from "react-redux";
-import { selectAllLogin} from "../../features/userSlice";
+import { selectAllLogin } from "../../features/userSlice";
 import { useNavigate } from 'react-router-dom';
-import { updateUserServer, loginServer } from "../../features/userSlice";
+import { updateUserServer, loginServer, deleteUserServer } from "../../features/userSlice";
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -50,18 +50,10 @@ export const Perfil = () => {
     }
     */
 
-    
+
     const user = useSelector(selectAllLogin);
 
-    const [newUsername, setNewUsername] = useState("");
-    const handleUsername = (event) => {
-        setNewUsername(event.target.value);
-        console.log(newUsername)
-    };
 
-    const handleUpdate = (username) => {
-        dispatch(updateUserServer({"username":username, "id":user[0].id }));
-    };
 
 
     const status = useSelector(state => state.logins.status);
@@ -69,29 +61,91 @@ export const Perfil = () => {
     const navigate = useNavigate();
 
 
+    const [editingUsername, setEditingUsername] = useState(false);
+    const [username, setUsername] = useState(user[0].username); // Nome de usuário inicial
+
+    const handleEditUsername = () => {
+        setEditingUsername(true);
+    };
+
+    const handleSaveUsername = () => {
+        setEditingUsername(false);
+        dispatch(updateUserServer({ "username": username, "id": user[0].id }));
+        // Lógica para salvar as alterações (pode incluir um dispatch se estiver usando Redux)
+    };
+    const handleInputChange = (e) => {
+        setUsername(e.target.value);
+    };
+
+
+    const [editingEmail, setEditingEmail] = useState(false);
+    const [email, setEmail] = useState(user[0].email); // Nome de usuário inicial
+
+    const handleEditEmail = () => {
+        setEditingEmail(true);
+    };
+
+    const handleSaveEmail = () => {
+        setEditingEmail(false);
+        dispatch(updateUserServer({ "email": email, "id": user[0].id }));
+        // Lógica para salvar as alterações (pode incluir um dispatch se estiver usando Redux)
+    };
+    const handleInputChangeEmail = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const handleExcluirConta = () => {
+        console.log("Tá chegando aqui?")
+        dispatch(deleteUserServer());
+    }
+
+
+
+
     if (status !== "logged_in") {
         return <Navigate to="/Login" />;
-      }else {
+    } else {
         return (
             <main>
                 <div className="perfil">
                     <form id="profile-form" >
-                        <label htmlFor="username">Nome de Usuário:</label>
-                        <input
-                            onChange={handleUsername}
-                            type="text"
-                            id="username"
-                            name="username"
-                            placeholder={user[0].username}
-                        />
-                        <label htmlFor="email">Email:</label>
-                        <input
-                            type="text"
-                            id="email"
-                            name="email"
-                            placeholder={user[0].email}
-                        />
-    
+
+
+                        <div>
+                            <p>Nome de usuário: {username}</p>
+                            {editingUsername ? (
+                                <div>
+                                    <input
+                                        type="text"
+                                        value={username}
+                                        onChange={handleInputChange}
+                                    />
+                                    <button onClick={handleSaveUsername}>Salvar</button>
+                                </div>
+                            ) : (
+                                <button onClick={handleEditUsername}>Alterar nome de usuário</button>
+                            )}
+                        </div>
+
+
+
+
+                        <div>
+                            <p>Endereço do email: {email}</p>
+                            {editingEmail ? (
+                                <div>
+                                    <input
+                                        type="text"
+                                        value={email}
+                                        onChange={handleInputChangeEmail}
+                                    />
+                                    <button onClick={handleSaveEmail}>Salvar</button>
+                                </div>
+                            ) : (
+                                <button onClick={handleEditEmail}>Alterar endereço de Email</button>
+                            )}
+                        </div>
+
                         <label htmlFor="cpf">CPF:</label>
                         <input
                             type="text"
@@ -100,7 +154,7 @@ export const Perfil = () => {
                             placeholder={user ? user[0].cpf : 'Usuario nao carregado'}
                             required=""
                         />
-            
+
                         <label htmlFor="password">Senha:</label>
                         <input
                             type="password"
@@ -109,8 +163,7 @@ export const Perfil = () => {
                             placeholder="*******"
                             required=""
                         />
-             
-                        <button onClick={() => handleUpdate(newUsername)} type="submit">Atualizar Dados</button>
+                        <button onClick={handleExcluirConta}>Excluir minha conta</button>
                     </form>
                     <div className="produtos">
                         <a href="adicionarVenda.html">
@@ -123,7 +176,7 @@ export const Perfil = () => {
                 </div>
             </main>
         )
-      }
+    }
 
-    
+
 }

@@ -47,8 +47,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/meusProdutos', meusProdutosRouter);
-
-
 app.use('/imageUpload', uploadRouter);
 app.use('/compras', comprasRouter);
 ////////////
