@@ -1,47 +1,45 @@
-import "./cadastro.css"
-import { Link } from 'react-router-dom'
-import React, { useState, useEffect } from 'react';
+import "./cadastro.css";
+import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { addUserServer } from "../../features/userSlice";
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-
-export const  Cadastro = () => {
-
+export const Cadastro = () => {
     const [newUsername, setNewUsername] = useState("");
-    const handleUsername = (event) => {
-        setNewUsername(event.target.value);
-        console.log(newUsername)
-    };
-
     const [newPassword, setNewPassword] = useState("");
-    const handlePassword = (event) => {
-        setNewPassword(event.target.value);
-        console.log(newPassword)
-    };
-
     const [newEmail, setNewEmail] = useState("");
-    const handleEmail = (event) => {
-        setNewEmail(event.target.value);
-        console.log(newEmail)
-    };
-    
     const [newCpf, setNewCpf] = useState("");
-    const handleCpf = (event) => {
-        setNewCpf(event.target.value);
-        console.log(newCpf)
-    };
+    const [error, setError] = useState(""); 
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleCadastro = (username, password, email, cpf) => {
-        dispatch(addUserServer({ "username": username, "password": password, "email":email, "cpf":cpf }));
-        navigate('/Login')
-        //navigate('/Perfil')
+    const handleUsername = (event) => {
+        setNewUsername(event.target.value);
     };
 
+    const handlePassword = (event) => {
+        setNewPassword(event.target.value);
+    };
 
+    const handleEmail = (event) => {
+        setNewEmail(event.target.value);
+    };
+
+    const handleCpf = (event) => {
+        setNewCpf(event.target.value);
+    };
+
+    const handleCadastro = () => {
+        if (!newUsername || !newPassword || !newEmail || !newCpf) {
+            setError("Todos os campos são obrigatórios");
+            return;
+        }
+
+        dispatch(addUserServer({ "username": newUsername, "password": newPassword, "email": newEmail, "cpf": newCpf }));
+        navigate('/Login');
+    };
 
     return (
         <section>
@@ -55,7 +53,8 @@ export const  Cadastro = () => {
                                 onChange={handleUsername}
                                 type="text"
                                 className="form-control"
-                                placeholder="Nome de usuário*" required
+                                placeholder="Nome de usuário*"
+                                required
                             />
                         </div>
                         <div className="col-12">
@@ -63,7 +62,8 @@ export const  Cadastro = () => {
                                 onChange={handleEmail}
                                 type="email"
                                 className="form-control"
-                                placeholder="Endereco de E-mail*" required
+                                placeholder="Endereco de E-mail*"
+                                required
                             />
                         </div>
                         <div className="col-md-6">
@@ -71,7 +71,8 @@ export const  Cadastro = () => {
                                 onChange={handleCpf}
                                 type="text"
                                 className="form-control"
-                                placeholder="CPF*" required
+                                placeholder="CPF*"
+                                required
                             />
                         </div>
                         <div className="col-md-6">
@@ -79,15 +80,17 @@ export const  Cadastro = () => {
                                 onChange={handlePassword}
                                 type="password"
                                 className="form-control"
-                                placeholder="Senha*" required
+                                placeholder="Senha*"
+                                required
                             />
                         </div>
                         <p id="field">(*) Campos Obrigatórios</p>
                         <hr />
                         <div id="botao">
-                            <button onClick={() => handleCadastro(newUsername, newPassword, newEmail, newCpf)} type="submit" id="out">
+                            <button onClick={handleCadastro} type="button" id="out">
                                 CADASTRAR-SE
                             </button>
+                            <p>{error && <span style={{ color: 'red' }}>{error}</span>}</p>
                             <p>
                                 Já é cadastrado?{" "}
                                 <Link to="/Login" id="ent">
@@ -99,8 +102,7 @@ export const  Cadastro = () => {
                 </div>
             </div>
         </section>
+    );
+};
 
-    )
-}
-
-export default Cadastro
+export default Cadastro;
